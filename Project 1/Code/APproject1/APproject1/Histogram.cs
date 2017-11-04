@@ -10,10 +10,7 @@ namespace APproject1
     public class Histogram
     {
         private Bitmap OriginalImage;
-        private int[] ValuesAvg;
-        private int[] ValuesR;
-        private int[] ValuesG;
-        private int[] ValuesB;
+        private Dictionary<string, int[]> ValueCollection;
 
         public Histogram(Bitmap bitmap)
         {
@@ -23,53 +20,34 @@ namespace APproject1
 
         private void CalculateRGB()
         {
-            this.ValuesAvg = new int[256];
-            this.ValuesR = new int[256];
-            this.ValuesG = new int[256];
-            this.ValuesB = new int[256];
+            this.ValueCollection = new Dictionary<string, int[]>();
+            string[] modes = new string[] { "AVG", "R", "G", "B"};
 
-            for (int i = 0; i < OriginalImage.Width; i++)
+            foreach (string mode in modes)
             {
-                for (int j = 0; j < OriginalImage.Height; j++)
+                this.ValueCollection.Add(mode, new int[256]);
+
+                for (int i = 0; i < OriginalImage.Width; i++)
                 {
-                    Color color = this.OriginalImage.GetPixel(i, j);
-                    int colorSumR = 0;
-                    int colorSumG = 0;
-                    int colorSumB = 0;
+                    for (int j = 0; j < OriginalImage.Height; j++)
+                    {
+                        Color color = this.OriginalImage.GetPixel(i, j);
+                        int colorSum = 0;
 
-                    colorSumR += color.R;
-                    colorSumG += color.G;
-                    colorSumB += color.B;
+                        if (mode.Equals("R") || mode.Equals("AVG")) colorSum += color.R;
+                        if (mode.Equals("G") || mode.Equals("AVG")) colorSum += color.G;
+                        if (mode.Equals("B") || mode.Equals("AVG")) colorSum += color.B;
 
-                    this.ValuesR[colorSumR]++;
-                    this.ValuesG[colorSumG]++;
-                    this.ValuesB[colorSumB]++;
+                        if (mode.Equals("AVG")) colorSum /= 3;
 
-                    int colorAvg = (colorSumR + colorSumG + colorSumB)/3;
-                    this.ValuesAvg[colorAvg]++;
+                        this.ValueCollection[mode][colorSum]++;
+                    }
                 }
             }
         }
 
-        public void DrawRGB(Bitmap bitmap, String mode)
+        public void DrawRGB(Bitmap bitmap, string mode)
         {
-            int[] values;
-            switch (mode)
-            {
-                case "R":
-                    values = this.ValuesR;
-                    break;
-                case "G":
-                    values = this.ValuesG;
-                    break;
-                case "B":
-                    values = this.ValuesB;
-                    break;
-                default:
-                    values = this.ValuesAvg;
-                    break;
-            }
-
             using (var g = Graphics.FromImage(bitmap))
             {
                 using (Pen pen = new Pen(Color.Black, 1))
@@ -79,26 +57,31 @@ namespace APproject1
                     g.DrawLine(pen, new Point(bitmap.Width - 1, bitmap.Height - 1), new Point(0, bitmap.Height - 1));
                     g.DrawLine(pen, new Point(bitmap.Width - 1, bitmap.Height - 1), new Point(bitmap.Width - 1, 0));
 
-                    float yUnit = (float)bitmap.Height / values.Max();
+                    float yUnit = (float)bitmap.Height / this.ValueCollection[mode].Max();
                     float xUnit = (float)bitmap.Width / 255;
 
                     pen.Width = xUnit;
 
-                    for (int i = 0; i<values.Length; i++)
+                    for (int i = 0; i< this.ValueCollection[mode].Length; i++)
                     {
-                        g.DrawLine(pen, new PointF(i*xUnit, bitmap.Height), new PointF(i*xUnit, bitmap.Height-(values[i]*yUnit)));
+                        g.DrawLine(pen, new PointF(i*xUnit, bitmap.Height), new PointF(i*xUnit, bitmap.Height-(this.ValueCollection[mode][i]*yUnit)));
                     }
                 }
             }
+        }
+
+        public void DrawHSV(Bitmap bitmap, string mode)
+        {
+
         }
 
         public Bitmap StretchRGB()
         {
             Bitmap stretched = new Bitmap(OriginalImage);
 
-            int[] red = GetMinMax(ValuesR);
-            int[] green = GetMinMax(ValuesG);
-            int[] blue = GetMinMax(ValuesB);
+            int[] red = GetMinMax(this.ValueCollection["R"]);
+            int[] green = GetMinMax(this.ValueCollection["G"]);
+            int[] blue = GetMinMax(this.ValueCollection["B"]);
 
             for (int i = 0; i < stretched.Width; i++ )
             {
