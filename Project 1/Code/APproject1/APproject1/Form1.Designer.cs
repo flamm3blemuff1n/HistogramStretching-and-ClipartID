@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBoxStretched = new System.Windows.Forms.PictureBox();
             this.pictureBoxHistogramStretched = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonLoadImage = new System.Windows.Forms.Button();
@@ -31,19 +32,24 @@
             this.pictureBoxOriginal = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonHistogramOrignal = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.comboBoxRGB = new System.Windows.Forms.ComboBox();
-            this.pictureBoxStretched = new System.Windows.Forms.PictureBox();
-            this.buttonStretch = new System.Windows.Forms.Button();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonStretch = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonHistogramStretch = new System.Windows.Forms.Button();
+            this.comboBoxRGBStretch = new System.Windows.Forms.ComboBox();
+            this.comboBoxModeOriginal = new System.Windows.Forms.ComboBox();
+            this.comboBoxModeStretch = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStretched)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramStretched)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramOriginal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStretched)).BeginInit();
             this.flowLayoutPanel3.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -58,6 +64,7 @@
             this.tableLayoutPanel1.Controls.Add(this.pictureBoxOriginal, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel4, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -66,16 +73,28 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1078, 566);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1084, 561);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // pictureBoxStretched
+            // 
+            this.pictureBoxStretched.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBoxStretched.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxStretched.Location = new System.Drawing.Point(3, 315);
+            this.pictureBoxStretched.Name = "pictureBoxStretched";
+            this.pictureBoxStretched.Size = new System.Drawing.Size(536, 243);
+            this.pictureBoxStretched.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxStretched.TabIndex = 5;
+            this.pictureBoxStretched.TabStop = false;
             // 
             // pictureBoxHistogramStretched
             // 
             this.pictureBoxHistogramStretched.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxHistogramStretched.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxHistogramStretched.Location = new System.Drawing.Point(542, 318);
+            this.pictureBoxHistogramStretched.Location = new System.Drawing.Point(545, 315);
             this.pictureBoxHistogramStretched.Name = "pictureBoxHistogramStretched";
-            this.pictureBoxHistogramStretched.Size = new System.Drawing.Size(533, 245);
+            this.pictureBoxHistogramStretched.Size = new System.Drawing.Size(536, 243);
             this.pictureBoxHistogramStretched.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxHistogramStretched.TabIndex = 3;
             this.pictureBoxHistogramStretched.TabStop = false;
@@ -86,7 +105,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(533, 27);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(536, 27);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // buttonLoadImage
@@ -103,9 +122,9 @@
             // 
             this.pictureBoxHistogramOriginal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxHistogramOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxHistogramOriginal.Location = new System.Drawing.Point(542, 36);
+            this.pictureBoxHistogramOriginal.Location = new System.Drawing.Point(545, 36);
             this.pictureBoxHistogramOriginal.Name = "pictureBoxHistogramOriginal";
-            this.pictureBoxHistogramOriginal.Size = new System.Drawing.Size(533, 243);
+            this.pictureBoxHistogramOriginal.Size = new System.Drawing.Size(536, 240);
             this.pictureBoxHistogramOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxHistogramOriginal.TabIndex = 2;
             this.pictureBoxHistogramOriginal.TabStop = false;
@@ -116,7 +135,7 @@
             this.pictureBoxOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxOriginal.Location = new System.Drawing.Point(3, 36);
             this.pictureBoxOriginal.Name = "pictureBoxOriginal";
-            this.pictureBoxOriginal.Size = new System.Drawing.Size(533, 243);
+            this.pictureBoxOriginal.Size = new System.Drawing.Size(536, 240);
             this.pictureBoxOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxOriginal.TabIndex = 1;
             this.pictureBoxOriginal.TabStop = false;
@@ -124,11 +143,12 @@
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.buttonHistogramOrignal);
+            this.flowLayoutPanel2.Controls.Add(this.comboBoxModeOriginal);
             this.flowLayoutPanel2.Controls.Add(this.comboBoxRGB);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(542, 3);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(545, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(533, 27);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(536, 27);
             this.flowLayoutPanel2.TabIndex = 4;
             // 
             // buttonHistogramOrignal
@@ -145,21 +165,19 @@
             // 
             this.comboBoxRGB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxRGB.FormattingEnabled = true;
-            this.comboBoxRGB.Location = new System.Drawing.Point(124, 3);
+            this.comboBoxRGB.Location = new System.Drawing.Point(182, 3);
             this.comboBoxRGB.Name = "comboBoxRGB";
             this.comboBoxRGB.Size = new System.Drawing.Size(52, 21);
             this.comboBoxRGB.TabIndex = 1;
             // 
-            // pictureBoxStretched
+            // flowLayoutPanel3
             // 
-            this.pictureBoxStretched.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBoxStretched.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxStretched.Location = new System.Drawing.Point(3, 318);
-            this.pictureBoxStretched.Name = "pictureBoxStretched";
-            this.pictureBoxStretched.Size = new System.Drawing.Size(533, 245);
-            this.pictureBoxStretched.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxStretched.TabIndex = 5;
-            this.pictureBoxStretched.TabStop = false;
+            this.flowLayoutPanel3.Controls.Add(this.buttonStretch);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 282);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(536, 27);
+            this.flowLayoutPanel3.TabIndex = 7;
             // 
             // buttonStretch
             // 
@@ -171,31 +189,72 @@
             this.buttonStretch.UseVisualStyleBackColor = true;
             this.buttonStretch.Click += new System.EventHandler(this.buttonStretch_Click);
             // 
-            // flowLayoutPanel3
+            // flowLayoutPanel4
             // 
-            this.flowLayoutPanel3.Controls.Add(this.buttonStretch);
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 285);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(533, 27);
-            this.flowLayoutPanel3.TabIndex = 7;
+            this.flowLayoutPanel4.Controls.Add(this.buttonHistogramStretch);
+            this.flowLayoutPanel4.Controls.Add(this.comboBoxModeStretch);
+            this.flowLayoutPanel4.Controls.Add(this.comboBoxRGBStretch);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(545, 282);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(536, 27);
+            this.flowLayoutPanel4.TabIndex = 8;
+            // 
+            // buttonHistogramStretch
+            // 
+            this.buttonHistogramStretch.Location = new System.Drawing.Point(3, 3);
+            this.buttonHistogramStretch.Name = "buttonHistogramStretch";
+            this.buttonHistogramStretch.Size = new System.Drawing.Size(115, 23);
+            this.buttonHistogramStretch.TabIndex = 2;
+            this.buttonHistogramStretch.Text = "Create Histogram";
+            this.buttonHistogramStretch.UseVisualStyleBackColor = true;
+            this.buttonHistogramStretch.Click += new System.EventHandler(this.buttonHistogramStretch_Click);
+            // 
+            // comboBoxRGBStretch
+            // 
+            this.comboBoxRGBStretch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRGBStretch.FormattingEnabled = true;
+            this.comboBoxRGBStretch.Location = new System.Drawing.Point(182, 3);
+            this.comboBoxRGBStretch.Name = "comboBoxRGBStretch";
+            this.comboBoxRGBStretch.Size = new System.Drawing.Size(52, 21);
+            this.comboBoxRGBStretch.TabIndex = 2;
+            // 
+            // comboBoxModeOriginal
+            // 
+            this.comboBoxModeOriginal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxModeOriginal.FormattingEnabled = true;
+            this.comboBoxModeOriginal.Location = new System.Drawing.Point(124, 3);
+            this.comboBoxModeOriginal.Name = "comboBoxModeOriginal";
+            this.comboBoxModeOriginal.Size = new System.Drawing.Size(52, 21);
+            this.comboBoxModeOriginal.TabIndex = 2;
+            // 
+            // comboBoxModeStretch
+            // 
+            this.comboBoxModeStretch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxModeStretch.FormattingEnabled = true;
+            this.comboBoxModeStretch.Location = new System.Drawing.Point(124, 3);
+            this.comboBoxModeStretch.Name = "comboBoxModeStretch";
+            this.comboBoxModeStretch.Size = new System.Drawing.Size(52, 21);
+            this.comboBoxModeStretch.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1078, 566);
+            this.ClientSize = new System.Drawing.Size(1084, 561);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MinimumSize = new System.Drawing.Size(1100, 600);
             this.Name = "Form1";
             this.Text = "HistogramStretcher";
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStretched)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramStretched)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramOriginal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStretched)).EndInit();
             this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -215,6 +274,11 @@
         private System.Windows.Forms.PictureBox pictureBoxStretched;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button buttonStretch;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.Button buttonHistogramStretch;
+        private System.Windows.Forms.ComboBox comboBoxRGBStretch;
+        private System.Windows.Forms.ComboBox comboBoxModeOriginal;
+        private System.Windows.Forms.ComboBox comboBoxModeStretch;
     }
 }
 
