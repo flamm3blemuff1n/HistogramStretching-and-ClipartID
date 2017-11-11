@@ -32,15 +32,15 @@
             this.pictureBoxOriginal = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonHistogramOrignal = new System.Windows.Forms.Button();
+            this.comboBoxModeOriginal = new System.Windows.Forms.ComboBox();
             this.comboBoxOptionOriginal = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonStretch = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonHistogramStretch = new System.Windows.Forms.Button();
-            this.comboBoxOptionStretch = new System.Windows.Forms.ComboBox();
-            this.comboBoxModeOriginal = new System.Windows.Forms.ComboBox();
             this.comboBoxModeStretch = new System.Windows.Forms.ComboBox();
+            this.comboBoxOptionStretch = new System.Windows.Forms.ComboBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStretched)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramStretched)).BeginInit();
@@ -161,11 +161,21 @@
             this.buttonHistogramOrignal.UseVisualStyleBackColor = true;
             this.buttonHistogramOrignal.Click += new System.EventHandler(this.buttonHistogramOrignal_Click);
             // 
+            // comboBoxModeOriginal
+            // 
+            this.comboBoxModeOriginal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxModeOriginal.FormattingEnabled = true;
+            this.comboBoxModeOriginal.Location = new System.Drawing.Point(124, 3);
+            this.comboBoxModeOriginal.Name = "comboBoxModeOriginal";
+            this.comboBoxModeOriginal.Size = new System.Drawing.Size(64, 21);
+            this.comboBoxModeOriginal.TabIndex = 2;
+            this.comboBoxModeOriginal.SelectedIndexChanged += new System.EventHandler(this.comboBoxModeOriginal_SelectedIndexChanged);
+            // 
             // comboBoxOptionOriginal
             // 
             this.comboBoxOptionOriginal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxOptionOriginal.FormattingEnabled = true;
-            this.comboBoxOptionOriginal.Location = new System.Drawing.Point(182, 3);
+            this.comboBoxOptionOriginal.Location = new System.Drawing.Point(194, 3);
             this.comboBoxOptionOriginal.Name = "comboBoxOptionOriginal";
             this.comboBoxOptionOriginal.Size = new System.Drawing.Size(52, 21);
             this.comboBoxOptionOriginal.TabIndex = 1;
@@ -210,34 +220,28 @@
             this.buttonHistogramStretch.UseVisualStyleBackColor = true;
             this.buttonHistogramStretch.Click += new System.EventHandler(this.buttonHistogramStretch_Click);
             // 
-            // comboBoxOptionStretch
-            // 
-            this.comboBoxOptionStretch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxOptionStretch.FormattingEnabled = true;
-            this.comboBoxOptionStretch.Location = new System.Drawing.Point(182, 3);
-            this.comboBoxOptionStretch.Name = "comboBoxOptionStretch";
-            this.comboBoxOptionStretch.Size = new System.Drawing.Size(52, 21);
-            this.comboBoxOptionStretch.TabIndex = 2;
-            // 
-            // comboBoxModeOriginal
-            // 
-            this.comboBoxModeOriginal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxModeOriginal.FormattingEnabled = true;
-            this.comboBoxModeOriginal.Location = new System.Drawing.Point(124, 3);
-            this.comboBoxModeOriginal.Name = "comboBoxModeOriginal";
-            this.comboBoxModeOriginal.Size = new System.Drawing.Size(52, 21);
-            this.comboBoxModeOriginal.TabIndex = 2;
-            this.comboBoxModeOriginal.SelectedIndexChanged += new System.EventHandler(this.comboBoxModeOriginal_SelectedIndexChanged);
-            // 
             // comboBoxModeStretch
             // 
             this.comboBoxModeStretch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxModeStretch.FormattingEnabled = true;
             this.comboBoxModeStretch.Location = new System.Drawing.Point(124, 3);
             this.comboBoxModeStretch.Name = "comboBoxModeStretch";
-            this.comboBoxModeStretch.Size = new System.Drawing.Size(52, 21);
+            this.comboBoxModeStretch.Size = new System.Drawing.Size(64, 21);
             this.comboBoxModeStretch.TabIndex = 3;
             this.comboBoxModeStretch.SelectedIndexChanged += new System.EventHandler(this.comboBoxModeStretch_SelectedIndexChanged);
+            // 
+            // comboBoxOptionStretch
+            // 
+            this.comboBoxOptionStretch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxOptionStretch.FormattingEnabled = true;
+            this.comboBoxOptionStretch.Location = new System.Drawing.Point(194, 3);
+            this.comboBoxOptionStretch.Name = "comboBoxOptionStretch";
+            this.comboBoxOptionStretch.Size = new System.Drawing.Size(52, 21);
+            this.comboBoxOptionStretch.TabIndex = 2;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.Filter = "All files (*.*)|*.*|Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
             // 
             // Form1
             // 

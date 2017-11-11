@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogicLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,10 +17,9 @@ namespace APproject1 {
 
         public Form1() {
             InitializeComponent();
-            this.openFileDialog1.Filter = "All files (*.*)|*.*|Image Files(*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF";
 
-            this.comboBoxModeOriginal.DataSource = new String[] { "RGB", "HSV"};
-            this.comboBoxModeStretch.DataSource = new String[] { "RGB", "HSV" };
+            this.comboBoxModeOriginal.DataSource = new String[] { "RGB", "CMYK"};
+            this.comboBoxModeStretch.DataSource = new String[] { "RGB", "CMYK" };
             this.comboBoxOptionOriginal.DataSource = new string[] { "AVG", "R", "G", "B"};
             this.comboBoxOptionStretch.DataSource = new string[] { "AVG", "R", "G", "B" };
 
@@ -35,6 +35,7 @@ namespace APproject1 {
                 OriginalImage = new Bitmap(openFileDialog1.FileName);
                 pictureBoxOriginal.Image = OriginalImage;
                 histogram = new Histogram(OriginalImage);
+
                 this.buttonHistogramOrignal.Enabled = true;
                 this.buttonStretch.Enabled = true;
             }
@@ -42,30 +43,32 @@ namespace APproject1 {
 
         private void buttonHistogramOrignal_Click(object sender, EventArgs e)
         {
-            string mode = this.comboBoxOptionOriginal.SelectedItem.ToString();
+            string color = this.comboBoxOptionOriginal.SelectedItem.ToString();
+            string colorMode = this.comboBoxModeOriginal.SelectedItem.ToString();
             this.pictureBoxHistogramOriginal.Image = new Bitmap(1920, 1080);
             var bitmap = (Bitmap)this.pictureBoxHistogramOriginal.Image;
             using (var g = Graphics.FromImage(bitmap)) g.Clear(Color.White);
 
-            histogram.DrawRGB(bitmap, mode);
+            histogram.DrawRGB(bitmap, colorMode, color);
             this.pictureBoxHistogramOriginal.Refresh();
         }
 
         private void buttonStretch_Click(object sender, EventArgs e)
         {
-            this.pictureBoxStretched.Image = histogram.StretchRGB();
+            this.pictureBoxStretched.Image = histogram.Stretch();
             this.buttonHistogramStretch.Enabled = true;
         }
 
         private void buttonHistogramStretch_Click(object sender, EventArgs e)
         {
-            string mode = this.comboBoxOptionStretch.SelectedItem.ToString();
+            string color = this.comboBoxOptionStretch.SelectedItem.ToString();
+            string colorMode = this.comboBoxModeStretch.SelectedItem.ToString();
             this.pictureBoxHistogramStretched.Image = new Bitmap(1920, 1080);
             var bitmap = (Bitmap)this.pictureBoxHistogramStretched.Image;
             using (var g = Graphics.FromImage(bitmap)) g.Clear(Color.White);
 
             Histogram histogramStretched = new Histogram((Bitmap)this.pictureBoxStretched.Image);
-            histogramStretched.DrawRGB(bitmap, mode);
+            histogramStretched.DrawRGB(bitmap, colorMode, color);
             this.pictureBoxHistogramStretched.Refresh();
         }
 
@@ -75,9 +78,9 @@ namespace APproject1 {
             {
                 this.comboBoxOptionOriginal.DataSource = new string[] { "AVG", "R", "G", "B" };
             }
-            else if (this.comboBoxModeOriginal.SelectedItem.ToString().Equals("HSV"))
+            else if (this.comboBoxModeOriginal.SelectedItem.ToString().Equals("CMYK"))
             {
-                this.comboBoxOptionOriginal.DataSource = new string[] { "AVG", "H", "S", "V" };
+                this.comboBoxOptionOriginal.DataSource = new string[] { "AVG", "C", "M", "Y", "K" };
             }
         }
 
@@ -87,9 +90,9 @@ namespace APproject1 {
             {
                 this.comboBoxOptionStretch.DataSource = new string[] { "AVG", "R", "G", "B" };
             }
-            else if (this.comboBoxModeStretch.SelectedItem.ToString().Equals("HSV"))
+            else if (this.comboBoxModeStretch.SelectedItem.ToString().Equals("CMYK"))
             {
-                this.comboBoxOptionStretch.DataSource = new string[] { "AVG", "H", "S", "V" };
+                this.comboBoxOptionStretch.DataSource = new string[] { "AVG", "C", "M", "Y", "K" };
             }
         }
     }
