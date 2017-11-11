@@ -102,7 +102,7 @@ namespace LogicLayer
             return new int[] { cyan, magenta, yellow, key};
         }
 
-        public void DrawRGB(Bitmap bitmap,string colorMode, string color)
+        public void Draw(Bitmap bitmap,string colorMode, string color)
         {
             Dictionary<string, int[]> values = new Dictionary<string, int[]>();
 

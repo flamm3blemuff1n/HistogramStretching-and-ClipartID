@@ -37,9 +37,6 @@
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonStretch = new System.Windows.Forms.Button();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonHistogramStretch = new System.Windows.Forms.Button();
-            this.comboBoxModeStretch = new System.Windows.Forms.ComboBox();
-            this.comboBoxOptionStretch = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStretched)).BeginInit();
@@ -49,7 +46,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -201,43 +197,11 @@
             // 
             // flowLayoutPanel4
             // 
-            this.flowLayoutPanel4.Controls.Add(this.buttonHistogramStretch);
-            this.flowLayoutPanel4.Controls.Add(this.comboBoxModeStretch);
-            this.flowLayoutPanel4.Controls.Add(this.comboBoxOptionStretch);
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel4.Location = new System.Drawing.Point(545, 282);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(536, 27);
             this.flowLayoutPanel4.TabIndex = 8;
-            // 
-            // buttonHistogramStretch
-            // 
-            this.buttonHistogramStretch.Location = new System.Drawing.Point(3, 3);
-            this.buttonHistogramStretch.Name = "buttonHistogramStretch";
-            this.buttonHistogramStretch.Size = new System.Drawing.Size(115, 23);
-            this.buttonHistogramStretch.TabIndex = 2;
-            this.buttonHistogramStretch.Text = "Create Histogram";
-            this.buttonHistogramStretch.UseVisualStyleBackColor = true;
-            this.buttonHistogramStretch.Click += new System.EventHandler(this.buttonHistogramStretch_Click);
-            // 
-            // comboBoxModeStretch
-            // 
-            this.comboBoxModeStretch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxModeStretch.FormattingEnabled = true;
-            this.comboBoxModeStretch.Location = new System.Drawing.Point(124, 3);
-            this.comboBoxModeStretch.Name = "comboBoxModeStretch";
-            this.comboBoxModeStretch.Size = new System.Drawing.Size(64, 21);
-            this.comboBoxModeStretch.TabIndex = 3;
-            this.comboBoxModeStretch.SelectedIndexChanged += new System.EventHandler(this.comboBoxModeStretch_SelectedIndexChanged);
-            // 
-            // comboBoxOptionStretch
-            // 
-            this.comboBoxOptionStretch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxOptionStretch.FormattingEnabled = true;
-            this.comboBoxOptionStretch.Location = new System.Drawing.Point(194, 3);
-            this.comboBoxOptionStretch.Name = "comboBoxOptionStretch";
-            this.comboBoxOptionStretch.Size = new System.Drawing.Size(52, 21);
-            this.comboBoxOptionStretch.TabIndex = 2;
             // 
             // openFileDialog1
             // 
@@ -260,7 +224,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -281,10 +244,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button buttonStretch;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
-        private System.Windows.Forms.Button buttonHistogramStretch;
-        private System.Windows.Forms.ComboBox comboBoxOptionStretch;
         private System.Windows.Forms.ComboBox comboBoxModeOriginal;
-        private System.Windows.Forms.ComboBox comboBoxModeStretch;
     }
 }
 
