@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Globals.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LogicLayer
 {
-    public class Histogram
+    public class Histogram : IHistogram
     {
         private Bitmap OriginalImage;
         private Dictionary<string, int[]> ValueCollectionRGB;
@@ -135,11 +136,6 @@ namespace LogicLayer
                     }
                 }
             }
-        }
-
-        public void DrawCMYK(Bitmap bitmap, string mode)
-        {
-
         }
 
         public Bitmap Stretch()

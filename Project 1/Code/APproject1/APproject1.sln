@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APproject1", "APproject1\AP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicLayer", "LogicLayer\LogicLayer.csproj", "{088C4913-3D73-41FD-8462-C641DD5D94FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Globals", "Globals\Globals.csproj", "{1860F85B-A352-4F69-AA2C-6645F8A2FBA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{088C4913-3D73-41FD-8462-C641DD5D94FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{088C4913-3D73-41FD-8462-C641DD5D94FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{088C4913-3D73-41FD-8462-C641DD5D94FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1860F85B-A352-4F69-AA2C-6645F8A2FBA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1860F85B-A352-4F69-AA2C-6645F8A2FBA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1860F85B-A352-4F69-AA2C-6645F8A2FBA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1860F85B-A352-4F69-AA2C-6645F8A2FBA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

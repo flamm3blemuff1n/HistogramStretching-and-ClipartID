@@ -1,4 +1,5 @@
-﻿using LogicLayer;
+﻿using Globals.Interfaces;
+using LogicLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,10 +12,10 @@ using System.Windows.Forms;
 
 namespace APproject1 {
     public partial class Form1 : Form {
-        private Bitmap OriginalImage;
-        private Histogram histogram;
-        private Boolean isStretched;
+        private IHistogram histogram;
 
+        private Bitmap OriginalImage;
+        private Boolean isStretched;
 
         public Form1() {
             InitializeComponent();
@@ -48,10 +49,8 @@ namespace APproject1 {
 
             histogram.Draw(bitmap, colorMode, color);
 
-            Console.WriteLine(isStretched);
             if (this.isStretched)
             {
-                Console.WriteLine("is not null");
                 this.pictureBoxHistogramStretched.Image = new Bitmap(1920, 1080);
                 var bitmapStretch = (Bitmap)this.pictureBoxHistogramStretched.Image;
                 using (var g = Graphics.FromImage(bitmapStretch)) g.Clear(Color.White);
@@ -69,20 +68,6 @@ namespace APproject1 {
             this.pictureBoxStretched.Image = histogram.Stretch();
             this.isStretched = true;
         }
-
-        /*
-        private void buttonHistogramStretch_Click(object sender, EventArgs e)
-        {
-            string color = this.comboBoxOptionStretch.SelectedItem.ToString();
-            string colorMode = this.comboBoxModeStretch.SelectedItem.ToString();
-            this.pictureBoxHistogramStretched.Image = new Bitmap(1920, 1080);
-            var bitmap = (Bitmap)this.pictureBoxHistogramStretched.Image;
-            using (var g = Graphics.FromImage(bitmap)) g.Clear(Color.White);
-
-            Histogram histogramStretched = new Histogram((Bitmap)this.pictureBoxStretched.Image);
-            histogramStretched.Draw(bitmap, colorMode, color);
-            this.pictureBoxHistogramStretched.Refresh();
-        }*/
 
         private void comboBoxModeOriginal_SelectedIndexChanged(object sender, EventArgs e)
         {

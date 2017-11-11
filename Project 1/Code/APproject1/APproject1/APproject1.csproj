@@ -79,6 +79,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Globals\Globals.csproj">
+      <Project>{1860F85B-A352-4F69-AA2C-6645F8A2FBA7}</Project>
+      <Name>Globals</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LogicLayer\LogicLayer.csproj">
       <Project>{088C4913-3D73-41FD-8462-C641DD5D94FA}</Project>
       <Name>LogicLayer</Name>
