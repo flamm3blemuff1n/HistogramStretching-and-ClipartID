@@ -177,7 +177,7 @@ namespace LogicLayer
                 }
             }
 
-            for (int i = 255; i >= 0; i++)
+            for (int i = 255; i >= 0; i--)
             {
                 if (values[i] > 0)
                 {

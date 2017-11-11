@@ -11,8 +11,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace APproject1 {
-    public partial class Form1 : Form {
+    public partial class Form1 : Form
+    {
         private IHistogram histogram;
+        private IHistogram histogramStretched;
 
         private Bitmap OriginalImage;
         private Boolean isStretched;
@@ -55,7 +57,6 @@ namespace APproject1 {
                 var bitmapStretch = (Bitmap)this.pictureBoxHistogramStretched.Image;
                 using (var g = Graphics.FromImage(bitmapStretch)) g.Clear(Color.White);
 
-                Histogram histogramStretched = new Histogram((Bitmap)this.pictureBoxStretched.Image);
                 histogramStretched.Draw(bitmapStretch, colorMode, color);
             }
 
@@ -66,6 +67,7 @@ namespace APproject1 {
         private void buttonStretch_Click(object sender, EventArgs e)
         {
             this.pictureBoxStretched.Image = histogram.Stretch();
+            histogramStretched = new Histogram((Bitmap)this.pictureBoxStretched.Image);
             this.isStretched = true;
         }
 
