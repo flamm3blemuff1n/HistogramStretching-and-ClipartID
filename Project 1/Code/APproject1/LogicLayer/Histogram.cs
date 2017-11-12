@@ -138,13 +138,13 @@ namespace LogicLayer
             }
         }
 
-        public Bitmap Stretch()
+        public Bitmap Stretch(int lowerLimit, int upperLimit)
         {
             Bitmap stretched = new Bitmap(OriginalImage);
 
-            int[] red = GetMinMax(this.ValueCollectionRGB["R"]);
-            int[] green = GetMinMax(this.ValueCollectionRGB["G"]);
-            int[] blue = GetMinMax(this.ValueCollectionRGB["B"]);
+            int[] red = GetMinMax(this.ValueCollectionRGB["R"], lowerLimit, upperLimit);
+            int[] green = GetMinMax(this.ValueCollectionRGB["G"], lowerLimit, upperLimit);
+            int[] blue = GetMinMax(this.ValueCollectionRGB["B"], lowerLimit, upperLimit);
 
             for (int i = 0; i < stretched.Width; i++)
             {
@@ -155,6 +155,14 @@ namespace LogicLayer
                     int g = (int)((color.G - green[0]) * (255 / (float)(green[1] - green[0])));
                     int b = (int)((color.B - blue[0]) * (255 / (float)(blue[1] - blue[0])));
 
+                    
+                    if (r > 255) r = 255;
+                    if (r < 0) r = 0;
+                    if (g > 255) g = 255;
+                    if (g < 0) g = 0;
+                    if (b > 255) b = 255;
+                    if (b < 0) b = 0;
+
                     Color colorNew = Color.FromArgb(r, g, b);
                     stretched.SetPixel(i, j, colorNew);
                 }
@@ -163,29 +171,48 @@ namespace LogicLayer
             return stretched;
         }
 
-        private int[] GetMinMax(int[] values)
+        private int[] GetMinMax(int[] values, int lower, int upper)
         {
-            int minP = 0;
-            int maxP = 0;
+            int pixels = OriginalImage.Width * OriginalImage.Height;
+            int lowerPixelCount = (int)Math.Round(pixels * (lower/100.0), 0);
+            int upperPixelCount = (int)pixels - (int)Math.Round(pixels * (upper/100.0), 0);
 
+            int minP = GetMin(values, lowerPixelCount);
+            int maxP = GetMax(values, upperPixelCount);
+
+            return new int[] { minP, maxP };
+        }
+
+        private int GetMin(int[] values, int lowerPixelCount)
+        {
+            int count = 0;
+            int minP = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 if (values[i] > 0)
                 {
+                    count += values[i];
                     minP = i;
-                    break;
+                    if (count >= lowerPixelCount) break;
                 }
             }
+            return minP;
+        }
 
+        private int GetMax(int[] values, int upperPixelCount)
+        {
+            int count = 0;
+            int maxP = 0;
             for (int i = 255; i >= 0; i--)
             {
                 if (values[i] > 0)
                 {
+                    count += values[i];
                     maxP = i;
-                    break;
+                    if (count >= upperPixelCount) break;
                 }
             }
-            return new int[] { minP, maxP };
+            return maxP;
         }
     }
 }

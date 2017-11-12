@@ -32,12 +32,20 @@ namespace APproject1 {
         private void buttonLoadImage_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK) {
+                this.labelLoading.Visible = true;
+                this.pictureBoxHistogramOriginal.Image = null;
+                this.pictureBoxHistogramStretched.Image = null;
+                this.pictureBoxOriginal.Image = null;
+                this.pictureBoxStretched.Image = null;
+                this.Update();
+
                 OriginalImage = new Bitmap(openFileDialog1.FileName);
                 pictureBoxOriginal.Image = OriginalImage;
                 histogram = new Histogram(OriginalImage);
 
                 this.buttonHistogramOrignal.Enabled = true;
                 this.buttonStretch.Enabled = true;
+                this.labelLoading.Visible = false;
             }
         }
 
@@ -66,9 +74,14 @@ namespace APproject1 {
 
         private void buttonStretch_Click(object sender, EventArgs e)
         {
-            this.pictureBoxStretched.Image = histogram.Stretch();
+            this.labelLoading.Visible = true;
+            this.Update();
+            int lower = (int)this.numericUpDownLower.Value;
+            int upper = (int)this.numericUpDownUpper.Value;
+            this.pictureBoxStretched.Image = histogram.Stretch(lower, upper);
             histogramStretched = new Histogram((Bitmap)this.pictureBoxStretched.Image);
             this.isStretched = true;
+            if(isStretched) this.labelLoading.Visible = false;
         }
 
         private void comboBoxModeOriginal_SelectedIndexChanged(object sender, EventArgs e)

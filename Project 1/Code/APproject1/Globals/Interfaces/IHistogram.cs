@@ -10,6 +10,6 @@ namespace Globals.Interfaces
     public interface IHistogram
     {
         void Draw(Bitmap bitmap, string colorMode, string color);
-        Bitmap Stretch();
+        Bitmap Stretch(int lowerLimit, int upperLimit);
     }
 }

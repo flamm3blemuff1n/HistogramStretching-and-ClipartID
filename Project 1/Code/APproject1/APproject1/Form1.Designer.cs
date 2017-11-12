@@ -28,6 +28,7 @@
             this.pictureBoxHistogramStretched = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonLoadImage = new System.Windows.Forms.Button();
+            this.labelLoading = new System.Windows.Forms.Label();
             this.pictureBoxHistogramOriginal = new System.Windows.Forms.PictureBox();
             this.pictureBoxOriginal = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -38,6 +39,8 @@
             this.buttonStretch = new System.Windows.Forms.Button();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.numericUpDownLower = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownUpper = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStretched)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramStretched)).BeginInit();
@@ -46,6 +49,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLower)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUpper)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -98,6 +103,7 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.buttonLoadImage);
+            this.flowLayoutPanel1.Controls.Add(this.labelLoading);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -113,6 +119,18 @@
             this.buttonLoadImage.Text = "Load Image";
             this.buttonLoadImage.UseVisualStyleBackColor = true;
             this.buttonLoadImage.Click += new System.EventHandler(this.buttonLoadImage_Click);
+            // 
+            // labelLoading
+            // 
+            this.labelLoading.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLoading.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelLoading.Location = new System.Drawing.Point(84, 0);
+            this.labelLoading.Name = "labelLoading";
+            this.labelLoading.Size = new System.Drawing.Size(150, 30);
+            this.labelLoading.TabIndex = 1;
+            this.labelLoading.Text = "Loading please wait";
+            this.labelLoading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelLoading.Visible = false;
             // 
             // pictureBoxHistogramOriginal
             // 
@@ -179,6 +197,8 @@
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.buttonStretch);
+            this.flowLayoutPanel3.Controls.Add(this.numericUpDownLower);
+            this.flowLayoutPanel3.Controls.Add(this.numericUpDownUpper);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 282);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
@@ -207,6 +227,27 @@
             // 
             this.openFileDialog1.Filter = "All files (*.*)|*.*|Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
             // 
+            // numericUpDownLower
+            // 
+            this.numericUpDownLower.Location = new System.Drawing.Point(127, 3);
+            this.numericUpDownLower.Name = "numericUpDownLower";
+            this.numericUpDownLower.Size = new System.Drawing.Size(44, 20);
+            this.numericUpDownLower.TabIndex = 3;
+            this.numericUpDownLower.Tag = "";
+            // 
+            // numericUpDownUpper
+            // 
+            this.numericUpDownUpper.Location = new System.Drawing.Point(177, 3);
+            this.numericUpDownUpper.Name = "numericUpDownUpper";
+            this.numericUpDownUpper.Size = new System.Drawing.Size(44, 20);
+            this.numericUpDownUpper.TabIndex = 4;
+            this.numericUpDownUpper.Tag = "";
+            this.numericUpDownUpper.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,6 +265,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLower)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUpper)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -245,6 +288,9 @@
         private System.Windows.Forms.Button buttonStretch;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.ComboBox comboBoxModeOriginal;
+        private System.Windows.Forms.Label labelLoading;
+        private System.Windows.Forms.NumericUpDown numericUpDownLower;
+        private System.Windows.Forms.NumericUpDown numericUpDownUpper;
     }
 }
 
