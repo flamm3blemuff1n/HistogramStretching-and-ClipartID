@@ -92,5 +92,10 @@
       <Name>LogicLayer</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestImages\PictureOpgave.PNG" />
+    <Content Include="TestImages\PictureOpgaveOutliers.png" />
+    <Content Include="TestImages\PictureWeb.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

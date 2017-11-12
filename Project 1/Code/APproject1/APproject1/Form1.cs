@@ -16,7 +16,7 @@ namespace APproject1 {
     {
         private IHistogram histogram;
         private IHistogram histogramStretched;
-        private ImageManager imageManager;
+        private IImageManager imageManager;
 
         private Bitmap OriginalImage;
         private Boolean isStretched;
@@ -37,6 +37,8 @@ namespace APproject1 {
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK) {
                 this.labelLoading.Visible = true;
+                this.buttonStretch.Enabled = false;
+                this.buttonHistogramOrignal.Enabled = false;
                 this.pictureBoxHistogramOriginal.Image = null;
                 this.pictureBoxHistogramStretched.Image = null;
                 this.pictureBoxOriginal.Image = null;
@@ -44,8 +46,16 @@ namespace APproject1 {
                 this.Update();
 
                 imageManager.SelectImagePath(openFileDialog1.FileName);
-
-                OriginalImage = new Bitmap(imageManager.CurrentImagePath);
+                try
+                {
+                    OriginalImage = new Bitmap(imageManager.CurrentImagePath);
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine("Not an image" + ex);
+                    this.labelLoading.Visible = false;
+                    return;
+                }
                 pictureBoxOriginal.Image = OriginalImage;
                 histogram = new Histogram(OriginalImage);
 
