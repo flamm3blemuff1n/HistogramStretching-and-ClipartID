@@ -1,4 +1,5 @@
-﻿using Globals.Interfaces;
+﻿using DataLayer;
+using Globals.Interfaces;
 using LogicLayer;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,15 @@ namespace APproject1 {
     {
         private IHistogram histogram;
         private IHistogram histogramStretched;
+        private ImageManager imageManager;
 
         private Bitmap OriginalImage;
         private Boolean isStretched;
 
         public Form1() {
             InitializeComponent();
+
+            imageManager = new ImageManager("");
 
             this.comboBoxModeOriginal.DataSource = new String[] { "RGB", "CMYK"};
             this.comboBoxOptionOriginal.DataSource = new string[] { "AVG", "R", "G", "B"};
@@ -39,7 +43,9 @@ namespace APproject1 {
                 this.pictureBoxStretched.Image = null;
                 this.Update();
 
-                OriginalImage = new Bitmap(openFileDialog1.FileName);
+                imageManager.SelectImagePath(openFileDialog1.FileName);
+
+                OriginalImage = new Bitmap(imageManager.CurrentImagePath);
                 pictureBoxOriginal.Image = OriginalImage;
                 histogram = new Histogram(OriginalImage);
 
