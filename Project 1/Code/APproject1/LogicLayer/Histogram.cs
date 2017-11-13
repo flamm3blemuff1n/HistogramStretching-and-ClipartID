@@ -24,29 +24,27 @@ namespace LogicLayer
         private void CalculateRGB()
         {
             this.ValueCollectionRGB = new Dictionary<string, int[]>();
-            string[] modes = new string[] { "AVG", "R", "G", "B" };
+            string[] modes = new string[] { "AVG", "LUM", "R", "G", "B" };
 
             foreach (string mode in modes)
             {
                 this.ValueCollectionRGB.Add(mode, new int[256]);
+            }
 
-                for (int i = 0; i < OriginalImage.Width; i++)
+            for (int i = 0; i < OriginalImage.Width; i++)
+            {
+                for (int j = 0; j < OriginalImage.Height; j++)
                 {
-                    for (int j = 0; j < OriginalImage.Height; j++)
-                    {
-                        Color color = this.OriginalImage.GetPixel(i, j);
-                        int colorSum = 0;
+                    Color color = this.OriginalImage.GetPixel(i, j);
 
-                        if (mode.Equals("R") || mode.Equals("AVG")) colorSum += color.R;
-                        if (mode.Equals("G") || mode.Equals("AVG")) colorSum += color.G;
-                        if (mode.Equals("B") || mode.Equals("AVG")) colorSum += color.B;
-
-                        if (mode.Equals("AVG")) colorSum /= 3;
-
-                        this.ValueCollectionRGB[mode][colorSum]++;
-                    }
+                    this.ValueCollectionRGB["R"][color.R]++;
+                    this.ValueCollectionRGB["G"][color.G]++;
+                    this.ValueCollectionRGB["B"][color.B]++;
+                    this.ValueCollectionRGB["AVG"][(color.R+color.G+color.B)/3]++;
+                    this.ValueCollectionRGB["LUM"][Math.Max(color.R, Math.Max(color.G, color.B))]++;
                 }
             }
+
         }
 
         private void CalculateCMYK()
@@ -57,26 +55,27 @@ namespace LogicLayer
             foreach (string mode in modes)
             {
                 this.ValueCollectionCMYK.Add(mode, new int[1001]);
+            }
 
-                for (int i = 0; i < OriginalImage.Width; i++)
+            for (int i = 0; i < OriginalImage.Width; i++)
+            {
+                for (int j = 0; j < OriginalImage.Height; j++)
                 {
-                    for (int j = 0; j < OriginalImage.Height; j++)
+                    Color color = this.OriginalImage.GetPixel(i, j);
+                    int[] values = ConvertRGB(color);
+
+                    this.ValueCollectionCMYK["C"][values[0]]++;
+                    this.ValueCollectionCMYK["M"][values[1]]++;
+                    this.ValueCollectionCMYK["Y"][values[2]]++;
+                    this.ValueCollectionCMYK["K"][values[3]]++;
+
+                    this.ValueCollectionCMYK["AVG"][(values[0]+ values[1] + values[2] + values[3])/4]++;
+
+                    foreach (string mode in modes)
                     {
-                        Color color = this.OriginalImage.GetPixel(i, j);
-                        int[] values = ConvertRGB(color);
-                        int colorSum = 0;
-
-                        if (mode.Equals("C") || mode.Equals("AVG")) colorSum += values[0];
-                        if (mode.Equals("M") || mode.Equals("AVG")) colorSum += values[1];
-                        if (mode.Equals("Y") || mode.Equals("AVG")) colorSum += values[2];
-                        if (mode.Equals("K") || mode.Equals("AVG")) colorSum += values[3];
-
-                        if (mode.Equals("AVG")) colorSum /= 3;
-
-                        this.ValueCollectionCMYK[mode][colorSum]++;
+                        this.ValueCollectionCMYK[mode][0] = 0;
                     }
                 }
-                this.ValueCollectionCMYK[mode][0] = 0;
             }
         }
 

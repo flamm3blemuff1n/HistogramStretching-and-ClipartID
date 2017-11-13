@@ -33,18 +33,18 @@
             this.pictureBoxOriginal = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonHistogramOrignal = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.comboBoxModeOriginal = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.comboBoxOptionOriginal = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonStretch = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDownLower = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDownUpper = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.numericUpDownLower = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownUpper = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStretched)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramStretched)).BeginInit();
@@ -181,23 +181,47 @@
             this.buttonHistogramOrignal.UseVisualStyleBackColor = true;
             this.buttonHistogramOrignal.Click += new System.EventHandler(this.buttonHistogramOrignal_Click);
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(124, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 29);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "ColorModel:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // comboBoxModeOriginal
             // 
             this.comboBoxModeOriginal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxModeOriginal.FormattingEnabled = true;
             this.comboBoxModeOriginal.Location = new System.Drawing.Point(193, 3);
             this.comboBoxModeOriginal.Name = "comboBoxModeOriginal";
-            this.comboBoxModeOriginal.Size = new System.Drawing.Size(64, 21);
+            this.comboBoxModeOriginal.Size = new System.Drawing.Size(60, 21);
             this.comboBoxModeOriginal.TabIndex = 2;
             this.comboBoxModeOriginal.SelectedIndexChanged += new System.EventHandler(this.comboBoxModeOriginal_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(259, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 29);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Component:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // comboBoxOptionOriginal
             // 
             this.comboBoxOptionOriginal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxOptionOriginal.FormattingEnabled = true;
-            this.comboBoxOptionOriginal.Location = new System.Drawing.Point(333, 3);
+            this.comboBoxOptionOriginal.Location = new System.Drawing.Point(329, 3);
             this.comboBoxOptionOriginal.Name = "comboBoxOptionOriginal";
-            this.comboBoxOptionOriginal.Size = new System.Drawing.Size(52, 21);
+            this.comboBoxOptionOriginal.Size = new System.Drawing.Size(49, 21);
             this.comboBoxOptionOriginal.TabIndex = 1;
             // 
             // flowLayoutPanel3
@@ -222,17 +246,17 @@
             this.buttonStretch.UseVisualStyleBackColor = true;
             this.buttonStretch.Click += new System.EventHandler(this.buttonStretch_Click);
             // 
-            // flowLayoutPanel4
+            // label1
             // 
-            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(545, 282);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(536, 27);
-            this.flowLayoutPanel4.TabIndex = 8;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.Filter = "All files (*.*)|*.*|Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(127, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(97, 29);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Lower Percentage:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numericUpDownLower
             // 
@@ -241,6 +265,18 @@
             this.numericUpDownLower.Size = new System.Drawing.Size(44, 20);
             this.numericUpDownLower.TabIndex = 3;
             this.numericUpDownLower.Tag = "";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(280, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 29);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Upper Percentage:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numericUpDownUpper
             // 
@@ -255,53 +291,17 @@
             0,
             0});
             // 
-            // label1
+            // flowLayoutPanel4
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(127, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 29);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Lower Percentage:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(545, 282);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(536, 27);
+            this.flowLayoutPanel4.TabIndex = 8;
             // 
-            // label2
+            // openFileDialog1
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(280, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 29);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Upper Percentage:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(124, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 29);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "ColorModel:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(263, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 29);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Component:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.openFileDialog1.Filter = "All files (*.*)|*.*|Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
             // 
             // Form1
             // 
