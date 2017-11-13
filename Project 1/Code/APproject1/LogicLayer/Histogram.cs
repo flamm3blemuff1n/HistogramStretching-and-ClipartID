@@ -84,7 +84,7 @@ namespace LogicLayer
             double red = (double)color.R / 255;
             double green = (double)color.G / 255;
             double blue = (double)color.B / 255;
-
+     
             if (red==0 && green==0 && blue == 0)
             {
                 return new int[] { 0, 0, 0, 1 };
