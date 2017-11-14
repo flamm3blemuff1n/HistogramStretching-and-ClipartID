@@ -14,17 +14,20 @@ using System.Windows.Forms;
 namespace APproject1 {
     public partial class Form1 : Form
     {
-        private IHistogram histogram;
-        private IHistogram histogramStretched;
-        private IImageManager imageManager;
+        private IHistogram Histogram;
+        private IHistogram HistogramStretched;
+        private IImageManager ImageManager;
+
+        private Boolean isStretched;
 
         private Bitmap OriginalImage;
-        private Boolean isStretched;
+        private Bitmap BitmapTemp;
+        private Bitmap BitmapStretchTemp;
 
         public Form1() {
             InitializeComponent();
 
-            imageManager = new ImageManager("");
+            ImageManager = new ImageManager("");
 
             this.comboBoxModeOriginal.DataSource = new String[] { "RGB", "CMYK"};
             this.comboBoxOptionOriginal.DataSource = new string[] { "LUM", "AVG", "R", "G", "B"};
@@ -33,22 +36,29 @@ namespace APproject1 {
             this.buttonStretch.Enabled = false;
         }
 
+        private void ResetForm()
+        {
+            this.buttonStretch.Enabled = false;
+            this.buttonHistogramOrignal.Enabled = false;
+            this.pictureBoxHistogramOriginal.Image = null;
+            this.pictureBoxHistogramStretched.Image = null;
+            this.pictureBoxOriginal.Image = null;
+            this.pictureBoxStretched.Image = null;
+            this.isStretched = false;
+        }
+
         private void buttonLoadImage_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK) {
+                ResetForm();
                 this.labelLoading.Visible = true;
-                this.buttonStretch.Enabled = false;
-                this.buttonHistogramOrignal.Enabled = false;
-                this.pictureBoxHistogramOriginal.Image = null;
-                this.pictureBoxHistogramStretched.Image = null;
-                this.pictureBoxOriginal.Image = null;
-                this.pictureBoxStretched.Image = null;
+                Cursor.Current = Cursors.WaitCursor;
                 this.Update();
 
-                imageManager.SelectImagePath(openFileDialog1.FileName);
+                ImageManager.SelectImagePath(openFileDialog1.FileName);
                 try
                 {
-                    OriginalImage = new Bitmap(imageManager.CurrentImagePath);
+                    OriginalImage = new Bitmap(ImageManager.CurrentImagePath);
                 }
                 catch (ArgumentException ex)
                 {
@@ -57,52 +67,23 @@ namespace APproject1 {
                     return;
                 }
                 pictureBoxOriginal.Image = OriginalImage;
-                histogram = new Histogram(OriginalImage);
+                Histogram = new Histogram(OriginalImage);
 
                 this.buttonHistogramOrignal.Enabled = true;
                 this.buttonStretch.Enabled = true;
                 this.labelLoading.Visible = false;
+                Cursor.Current = Cursors.Default;
             }
         }
 
         private void buttonHistogramOrignal_Click(object sender, EventArgs e)
         {
-            
-
-
-            string color = this.comboBoxOptionOriginal.SelectedItem.ToString();
-            string colorMode = this.comboBoxModeOriginal.SelectedItem.ToString();
-            this.pictureBoxHistogramOriginal.Image = new Bitmap(1920, 1080);
-            var bitmap = (Bitmap)this.pictureBoxHistogramOriginal.Image;
-            using (var g = Graphics.FromImage(bitmap)) g.Clear(Color.White);
-
-            histogram.Draw(bitmap, colorMode, color);
-
-            this.pictureBoxHistogramOriginal.Refresh();
-            bitmap.Dispose();
-
-            if (this.isStretched)
-            {
-                this.pictureBoxHistogramStretched.Image = new Bitmap(1920, 1080);
-                var bitmapStretch = (Bitmap)this.pictureBoxHistogramStretched.Image;
-                using (var g = Graphics.FromImage(bitmapStretch)) g.Clear(Color.White);
-
-                histogramStretched.Draw(bitmapStretch, colorMode, color);
-                this.pictureBoxHistogramStretched.Refresh();
-                bitmapStretch.Dispose();
-            }
+            CreateHistogram();
         }
 
         private void buttonStretch_Click(object sender, EventArgs e)
         {
-            this.labelLoading.Visible = true;
-            this.Update();
-            int lower = (int)this.numericUpDownLower.Value;
-            int upper = (int)this.numericUpDownUpper.Value;
-            this.pictureBoxStretched.Image = histogram.Stretch(lower, upper);
-            histogramStretched = new Histogram((Bitmap)this.pictureBoxStretched.Image);
-            this.isStretched = true;
-            if(isStretched) this.labelLoading.Visible = false;
+            Stretch();
         }
 
         private void comboBoxModeOriginal_SelectedIndexChanged(object sender, EventArgs e)
@@ -114,6 +95,65 @@ namespace APproject1 {
             else if (this.comboBoxModeOriginal.SelectedItem.ToString().Equals("CMYK"))
             {
                 this.comboBoxOptionOriginal.DataSource = new string[] { "AVG", "C", "M", "Y", "K" };
+            }
+        }
+
+        private void numericUpDownLower_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateForm();
+        }
+
+        private void numericUpDownUpper_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateForm();
+        }
+
+        private void UpdateForm()
+        {
+            if (this.isStretched == true)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                Stretch();
+                CreateHistogram();
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private void Stretch()
+        {
+            this.labelLoading.Visible = true;
+            this.Update();
+            int lower = (int)this.numericUpDownLower.Value;
+            int upper = (int)this.numericUpDownUpper.Value;
+            this.pictureBoxStretched.Image = Histogram.Stretch(lower, upper);
+            HistogramStretched = new Histogram((Bitmap)this.pictureBoxStretched.Image);
+            this.isStretched = true;
+            if (isStretched) this.labelLoading.Visible = false;
+        }
+
+        private void CreateHistogram()
+        {
+            if (BitmapTemp != null) BitmapTemp.Dispose();
+            if (BitmapStretchTemp != null) BitmapStretchTemp.Dispose();
+
+            string color = this.comboBoxOptionOriginal.SelectedItem.ToString();
+            string colorMode = this.comboBoxModeOriginal.SelectedItem.ToString();
+            this.pictureBoxHistogramOriginal.Image = new Bitmap(1920, 1080);
+            BitmapTemp = (Bitmap)this.pictureBoxHistogramOriginal.Image;
+            using (var g = Graphics.FromImage(BitmapTemp)) g.Clear(Color.White);
+
+            Histogram.Draw(BitmapTemp, colorMode, color);
+
+            this.pictureBoxHistogramOriginal.Refresh();
+
+            if (this.isStretched)
+            {
+                this.pictureBoxHistogramStretched.Image = new Bitmap(1920, 1080);
+                BitmapStretchTemp = (Bitmap)this.pictureBoxHistogramStretched.Image;
+                using (var g = Graphics.FromImage(BitmapStretchTemp)) g.Clear(Color.White);
+
+                HistogramStretched.Draw(BitmapStretchTemp, colorMode, color);
+                this.pictureBoxHistogramStretched.Refresh();
             }
         }
     }

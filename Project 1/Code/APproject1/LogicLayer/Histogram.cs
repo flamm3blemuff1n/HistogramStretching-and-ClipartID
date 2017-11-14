@@ -81,9 +81,9 @@ namespace LogicLayer
 
         private int[] ConvertRGB(Color color)
         {
-            double red = (double)color.R / 255;
-            double green = (double)color.G / 255;
-            double blue = (double)color.B / 255;
+            double red = color.R / 255.0;
+            double green = color.G / 255.0;
+            double blue = color.B / 255.0;
      
             if (red==0 && green==0 && blue == 0)
             {
@@ -119,10 +119,12 @@ namespace LogicLayer
             {
                 using (Pen pen = new Pen(Color.Black, 1))
                 {
+                    /*
                     g.DrawLine(pen, new Point(0, 0), new Point(bitmap.Width, 0));
                     g.DrawLine(pen, new Point(0, 0), new Point(0, bitmap.Height));
                     g.DrawLine(pen, new Point(bitmap.Width - 1, bitmap.Height - 1), new Point(0, bitmap.Height - 1));
                     g.DrawLine(pen, new Point(bitmap.Width - 1, bitmap.Height - 1), new Point(bitmap.Width - 1, 0));
+                    */
 
                     float yUnit = (float)bitmap.Height / values[color].Max();
                     float xUnit = (float)bitmap.Width / 255;
@@ -145,16 +147,24 @@ namespace LogicLayer
             int[] green = GetMinMax(this.ValueCollectionRGB["G"], lowerLimit, upperLimit);
             int[] blue = GetMinMax(this.ValueCollectionRGB["B"], lowerLimit, upperLimit);
 
+            int min = Math.Min(red[0], Math.Min(green[0], blue[0]));
+            int max = Math.Min(red[1], Math.Min(green[1], blue[1]));
+
             for (int i = 0; i < stretched.Width; i++)
             {
                 for (int j = 0; j < stretched.Height; j++)
                 {
                     Color color = stretched.GetPixel(i, j);
+                    /*
                     int r = (int)((color.R - red[0]) * (255 / (float)(red[1] - red[0])));
                     int g = (int)((color.G - green[0]) * (255 / (float)(green[1] - green[0])));
                     int b = (int)((color.B - blue[0]) * (255 / (float)(blue[1] - blue[0])));
+                    */
+                    int r = (int)((color.R - min) * (255 / (float)(max - min)));
+                    int g = (int)((color.G - min) * (255 / (float)(max - min)));
+                    int b = (int)((color.B - min) * (255 / (float)(max - min)));
 
-                    
+
                     if (r > 255) r = 255;
                     if (r < 0) r = 0;
                     if (g > 255) g = 255;

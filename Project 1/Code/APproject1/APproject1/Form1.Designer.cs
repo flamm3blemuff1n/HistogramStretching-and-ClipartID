@@ -269,7 +269,8 @@
             this.numericUpDownLower.Size = new System.Drawing.Size(44, 20);
             this.numericUpDownLower.TabIndex = 3;
             this.numericUpDownLower.Tag = "";
-            this.toolTip1.SetToolTip(this.numericUpDownLower, "The amount of pixels in percent that will be ignored set the lower border");
+            this.toolTip1.SetToolTip(this.numericUpDownLower, "The amount of pixels in percent that will be ignored to \r\nset the lower border");
+            this.numericUpDownLower.ValueChanged += new System.EventHandler(this.numericUpDownLower_ValueChanged);
             // 
             // label2
             // 
@@ -296,6 +297,7 @@
             0,
             0,
             0});
+            this.numericUpDownUpper.ValueChanged += new System.EventHandler(this.numericUpDownUpper_ValueChanged);
             // 
             // flowLayoutPanel4
             // 
