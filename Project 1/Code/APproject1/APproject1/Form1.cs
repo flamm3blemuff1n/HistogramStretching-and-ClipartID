@@ -36,6 +36,7 @@ namespace APproject1 {
             this.buttonStretch.Enabled = false;
         }
 
+        //Reset Form to initial layout
         private void ResetForm()
         {
             this.buttonStretch.Enabled = false;
@@ -47,6 +48,7 @@ namespace APproject1 {
             this.isStretched = false;
         }
 
+        //Start Stretch
         private void Stretch()
         {
             this.labelLoading.Visible = true;
@@ -59,6 +61,7 @@ namespace APproject1 {
             if (isStretched) this.labelLoading.Visible = false;
         }
 
+        //Start creation of histogram
         private void CreateHistogram()
         {
             if (BitmapTemp != null) BitmapTemp.Dispose();
@@ -146,6 +149,7 @@ namespace APproject1 {
             UpdateForm();
         }
 
+        //Update Stretched Image and Histogram after values changed
         private void UpdateForm()
         {
             if (this.isStretched == true)

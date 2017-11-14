@@ -17,11 +17,31 @@ namespace LogicLayer
         public Histogram(Bitmap bitmap)
         {
             this.OriginalImage = bitmap;
-            CalculateRGB();
-            CalculateCMYK();
+            CalculateHistogram();
         }
 
-        private void CalculateRGB()
+        private void CalculateHistogram()
+        {
+            InitValues();
+
+            for (int i = 0; i < OriginalImage.Width; i++)
+            {
+                for (int j = 0; j < OriginalImage.Height; j++)
+                {
+                    Color color = this.OriginalImage.GetPixel(i, j);
+
+                    AddRgbColor(color);
+                    AddCmykColor(color);
+                }
+            }
+
+            foreach (string mode in new string[] { "AVG", "C", "M", "Y", "K" })
+            {
+                this.ValueCollectionCMYK[mode][0] = 0;
+            }
+        }
+
+        private void InitValues()
         {
             this.ValueCollectionRGB = new Dictionary<string, int[]>();
             string[] modes = new string[] { "AVG", "LUM", "R", "G", "B" };
@@ -31,55 +51,36 @@ namespace LogicLayer
                 this.ValueCollectionRGB.Add(mode, new int[256]);
             }
 
-            for (int i = 0; i < OriginalImage.Width; i++)
-            {
-                for (int j = 0; j < OriginalImage.Height; j++)
-                {
-                    Color color = this.OriginalImage.GetPixel(i, j);
-
-                    this.ValueCollectionRGB["R"][color.R]++;
-                    this.ValueCollectionRGB["G"][color.G]++;
-                    this.ValueCollectionRGB["B"][color.B]++;
-                    this.ValueCollectionRGB["AVG"][(color.R+color.G+color.B)/3]++;
-                    this.ValueCollectionRGB["LUM"][Math.Max(color.R, Math.Max(color.G, color.B))]++;
-                }
-            }
-
-        }
-
-        private void CalculateCMYK()
-        {
             this.ValueCollectionCMYK = new Dictionary<string, int[]>();
-            string[] modes = new string[] { "AVG", "C", "M", "Y", "K" };
+            modes = new string[] { "AVG", "C", "M", "Y", "K" };
 
             foreach (string mode in modes)
             {
                 this.ValueCollectionCMYK.Add(mode, new int[1001]);
             }
-
-            for (int i = 0; i < OriginalImage.Width; i++)
-            {
-                for (int j = 0; j < OriginalImage.Height; j++)
-                {
-                    Color color = this.OriginalImage.GetPixel(i, j);
-                    int[] values = ConvertRGB(color);
-
-                    this.ValueCollectionCMYK["C"][values[0]]++;
-                    this.ValueCollectionCMYK["M"][values[1]]++;
-                    this.ValueCollectionCMYK["Y"][values[2]]++;
-                    this.ValueCollectionCMYK["K"][values[3]]++;
-
-                    this.ValueCollectionCMYK["AVG"][(values[0]+ values[1] + values[2] + values[3])/4]++;
-
-                    foreach (string mode in modes)
-                    {
-                        this.ValueCollectionCMYK[mode][0] = 0;
-                    }
-                }
-            }
         }
 
-        private int[] ConvertRGB(Color color)
+        private void AddRgbColor(Color color)
+        {
+            this.ValueCollectionRGB["R"][color.R]++;
+            this.ValueCollectionRGB["G"][color.G]++;
+            this.ValueCollectionRGB["B"][color.B]++;
+            this.ValueCollectionRGB["AVG"][(color.R + color.G + color.B) / 3]++;
+            this.ValueCollectionRGB["LUM"][Math.Max(color.R, Math.Max(color.G, color.B))]++;
+        }
+
+        private void AddCmykColor(Color color)
+        {
+            int[] values = ConvertRgbToCmyk(color);
+
+            this.ValueCollectionCMYK["C"][values[0]]++;
+            this.ValueCollectionCMYK["M"][values[1]]++;
+            this.ValueCollectionCMYK["Y"][values[2]]++;
+            this.ValueCollectionCMYK["K"][values[3]]++;
+            this.ValueCollectionCMYK["AVG"][(values[0] + values[1] + values[2] + values[3]) / 4]++;
+        }
+
+        private int[] ConvertRgbToCmyk(Color color)
         {
             double red = color.R / 255.0;
             double green = color.G / 255.0;
@@ -106,26 +107,22 @@ namespace LogicLayer
         {
             Dictionary<string, int[]> values = new Dictionary<string, int[]>();
 
-            if (colorMode.Equals("CMYK"))
+            switch (colorMode)
             {
-                values = this.ValueCollectionCMYK;
-            }
-            else
-            {
-                values = this.ValueCollectionRGB;
+               case "CMYK":
+                    values = this.ValueCollectionCMYK;
+                    break;
+                case "RGB":
+                    values = this.ValueCollectionRGB;
+                    break;
+                default:
+                    return;
             }
 
             using (var g = Graphics.FromImage(bitmap))
             {
                 using (Pen pen = new Pen(Color.Black, 1))
                 {
-                    /*
-                    g.DrawLine(pen, new Point(0, 0), new Point(bitmap.Width, 0));
-                    g.DrawLine(pen, new Point(0, 0), new Point(0, bitmap.Height));
-                    g.DrawLine(pen, new Point(bitmap.Width - 1, bitmap.Height - 1), new Point(0, bitmap.Height - 1));
-                    g.DrawLine(pen, new Point(bitmap.Width - 1, bitmap.Height - 1), new Point(bitmap.Width - 1, 0));
-                    */
-
                     float yUnit = (float)bitmap.Height / values[color].Max();
                     float xUnit = (float)bitmap.Width / 255;
 
