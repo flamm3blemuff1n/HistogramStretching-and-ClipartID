@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxStretched = new System.Windows.Forms.PictureBox();
             this.pictureBoxHistogramStretched = new System.Windows.Forms.PictureBox();
@@ -45,6 +46,7 @@
             this.numericUpDownUpper = new System.Windows.Forms.NumericUpDown();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStretched)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramStretched)).BeginInit();
@@ -74,11 +76,10 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1084, 561);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -86,9 +87,9 @@
             // 
             this.pictureBoxStretched.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxStretched.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxStretched.Location = new System.Drawing.Point(3, 315);
+            this.pictureBoxStretched.Location = new System.Drawing.Point(3, 316);
             this.pictureBoxStretched.Name = "pictureBoxStretched";
-            this.pictureBoxStretched.Size = new System.Drawing.Size(536, 243);
+            this.pictureBoxStretched.Size = new System.Drawing.Size(536, 242);
             this.pictureBoxStretched.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxStretched.TabIndex = 5;
             this.pictureBoxStretched.TabStop = false;
@@ -97,9 +98,9 @@
             // 
             this.pictureBoxHistogramStretched.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxHistogramStretched.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxHistogramStretched.Location = new System.Drawing.Point(545, 315);
+            this.pictureBoxHistogramStretched.Location = new System.Drawing.Point(545, 316);
             this.pictureBoxHistogramStretched.Name = "pictureBoxHistogramStretched";
-            this.pictureBoxHistogramStretched.Size = new System.Drawing.Size(536, 243);
+            this.pictureBoxHistogramStretched.Size = new System.Drawing.Size(536, 242);
             this.pictureBoxHistogramStretched.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxHistogramStretched.TabIndex = 3;
             this.pictureBoxHistogramStretched.TabStop = false;
@@ -142,7 +143,7 @@
             this.pictureBoxHistogramOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxHistogramOriginal.Location = new System.Drawing.Point(545, 36);
             this.pictureBoxHistogramOriginal.Name = "pictureBoxHistogramOriginal";
-            this.pictureBoxHistogramOriginal.Size = new System.Drawing.Size(536, 240);
+            this.pictureBoxHistogramOriginal.Size = new System.Drawing.Size(536, 241);
             this.pictureBoxHistogramOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxHistogramOriginal.TabIndex = 2;
             this.pictureBoxHistogramOriginal.TabStop = false;
@@ -153,7 +154,7 @@
             this.pictureBoxOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxOriginal.Location = new System.Drawing.Point(3, 36);
             this.pictureBoxOriginal.Name = "pictureBoxOriginal";
-            this.pictureBoxOriginal.Size = new System.Drawing.Size(536, 240);
+            this.pictureBoxOriginal.Size = new System.Drawing.Size(536, 241);
             this.pictureBoxOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxOriginal.TabIndex = 1;
             this.pictureBoxOriginal.TabStop = false;
@@ -201,6 +202,7 @@
             this.comboBoxModeOriginal.Name = "comboBoxModeOriginal";
             this.comboBoxModeOriginal.Size = new System.Drawing.Size(60, 21);
             this.comboBoxModeOriginal.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.comboBoxModeOriginal, "Select a color model that the histograms should represent.");
             this.comboBoxModeOriginal.SelectedIndexChanged += new System.EventHandler(this.comboBoxModeOriginal_SelectedIndexChanged);
             // 
             // label4
@@ -223,6 +225,8 @@
             this.comboBoxOptionOriginal.Name = "comboBoxOptionOriginal";
             this.comboBoxOptionOriginal.Size = new System.Drawing.Size(49, 21);
             this.comboBoxOptionOriginal.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.comboBoxOptionOriginal, "Select the color component or value of a color model that the histogram should re" +
+        "present.");
             // 
             // flowLayoutPanel3
             // 
@@ -231,7 +235,7 @@
             this.flowLayoutPanel3.Controls.Add(this.numericUpDownLower);
             this.flowLayoutPanel3.Controls.Add(this.label2);
             this.flowLayoutPanel3.Controls.Add(this.numericUpDownUpper);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 282);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 283);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(536, 27);
             this.flowLayoutPanel3.TabIndex = 7;
@@ -265,6 +269,7 @@
             this.numericUpDownLower.Size = new System.Drawing.Size(44, 20);
             this.numericUpDownLower.TabIndex = 3;
             this.numericUpDownLower.Tag = "";
+            this.toolTip1.SetToolTip(this.numericUpDownLower, "The amount of pixels in percent that will be ignored set the lower border");
             // 
             // label2
             // 
@@ -285,6 +290,7 @@
             this.numericUpDownUpper.Size = new System.Drawing.Size(44, 20);
             this.numericUpDownUpper.TabIndex = 4;
             this.numericUpDownUpper.Tag = "";
+            this.toolTip1.SetToolTip(this.numericUpDownUpper, "The amount of pixels in percent that will be ignored set the upper border");
             this.numericUpDownUpper.Value = new decimal(new int[] {
             100,
             0,
@@ -294,7 +300,7 @@
             // flowLayoutPanel4
             // 
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(545, 282);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(545, 283);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Size = new System.Drawing.Size(536, 27);
             this.flowLayoutPanel4.TabIndex = 8;
@@ -302,6 +308,13 @@
             // openFileDialog1
             // 
             this.openFileDialog1.Filter = "All files (*.*)|*.*|Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutomaticDelay = 250;
+            this.toolTip1.AutoPopDelay = 15000;
+            this.toolTip1.InitialDelay = 250;
+            this.toolTip1.ReshowDelay = 50;
             // 
             // Form1
             // 
@@ -352,6 +365,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
