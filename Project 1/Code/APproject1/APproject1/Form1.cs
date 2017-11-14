@@ -31,9 +31,6 @@ namespace APproject1 {
 
             this.comboBoxModeOriginal.DataSource = new String[] { "RGB", "CMYK"};
             this.comboBoxOptionOriginal.DataSource = new string[] { "LUM", "AVG", "R", "G", "B"};
-
-            this.buttonHistogramOrignal.Enabled = false;
-            this.buttonStretch.Enabled = false;
         }
 
         //Reset Form to initial layout
@@ -69,6 +66,7 @@ namespace APproject1 {
 
             string color = this.comboBoxOptionOriginal.SelectedItem.ToString();
             string colorMode = this.comboBoxModeOriginal.SelectedItem.ToString();
+
             this.pictureBoxHistogramOriginal.Image = new Bitmap(1920, 1080);
             BitmapTemp = (Bitmap)this.pictureBoxHistogramOriginal.Image;
             using (var g = Graphics.FromImage(BitmapTemp)) g.Clear(Color.White);
