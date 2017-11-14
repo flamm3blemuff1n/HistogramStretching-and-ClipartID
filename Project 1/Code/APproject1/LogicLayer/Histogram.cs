@@ -20,6 +20,7 @@ namespace LogicLayer
             CalculateHistogram();
         }
 
+        //Calculate Amount of pixels per luminosity value for RGB and CMYK.
         private void CalculateHistogram()
         {
             InitValues();
@@ -41,6 +42,7 @@ namespace LogicLayer
             }
         }
 
+        //Initialize dictionaries for all values calculatted by CalculateHistogram.
         private void InitValues()
         {
             this.ValueCollectionRGB = new Dictionary<string, int[]>();
@@ -60,6 +62,7 @@ namespace LogicLayer
             }
         }
 
+        //Add RGB values to dictionary.
         private void AddRgbColor(Color color)
         {
             this.ValueCollectionRGB["R"][color.R]++;
@@ -69,6 +72,7 @@ namespace LogicLayer
             this.ValueCollectionRGB["LUM"][Math.Max(color.R, Math.Max(color.G, color.B))]++;
         }
 
+        //Add CMYK values to dictionary.
         private void AddCmykColor(Color color)
         {
             int[] values = ConvertRgbToCmyk(color);
@@ -80,6 +84,7 @@ namespace LogicLayer
             this.ValueCollectionCMYK["AVG"][(values[0] + values[1] + values[2] + values[3]) / 4]++;
         }
 
+        //Convert RGB color Values to CMYK color values.
         private int[] ConvertRgbToCmyk(Color color)
         {
             double red = color.R / 255.0;
@@ -103,13 +108,98 @@ namespace LogicLayer
             return new int[] { cyan, magenta, yellow, key};
         }
 
-        public void Draw(Bitmap bitmap,string colorMode, string color)
+        //Stretch Original Image.
+        public Bitmap Stretch(int lowerLimit, int upperLimit)
+        {
+            Bitmap stretched = new Bitmap(OriginalImage);
+
+            int[] red = GetMinMax(this.ValueCollectionRGB["R"], lowerLimit, upperLimit);
+            int[] green = GetMinMax(this.ValueCollectionRGB["G"], lowerLimit, upperLimit);
+            int[] blue = GetMinMax(this.ValueCollectionRGB["B"], lowerLimit, upperLimit);
+
+            int min = Math.Min(red[0], Math.Min(green[0], blue[0]));
+            int max = Math.Min(red[1], Math.Min(green[1], blue[1]));
+
+            for (int i = 0; i < stretched.Width; i++)
+            {
+                for (int j = 0; j < stretched.Height; j++)
+                {
+                    Color color = stretched.GetPixel(i, j);
+
+                    int r = (int)((color.R - min) * (255 / (float)(max - min)));
+                    int g = (int)((color.G - min) * (255 / (float)(max - min)));
+                    int b = (int)((color.B - min) * (255 / (float)(max - min)));
+                    
+                    if (r > 255) r = 255;
+                    if (r < 0) r = 0;
+                    if (g > 255) g = 255;
+                    if (g < 0) g = 0;
+                    if (b > 255) b = 255;
+                    if (b < 0) b = 0;
+
+                    Color colorNew = Color.FromArgb(r, g, b);
+                    stretched.SetPixel(i, j, colorNew);
+                }
+            }
+
+            return stretched;
+        }
+
+        //Get minimum and maximum value for a color component.
+        private int[] GetMinMax(int[] values, int lower, int upper)
+        {
+            int pixels = OriginalImage.Width * OriginalImage.Height;
+            int lowerPixelCount = (int)Math.Round(pixels * (lower/100.0), 0);
+            int upperPixelCount = (int)pixels - (int)Math.Round(pixels * (upper/100.0), 0);
+
+            int minP = GetMin(values, lowerPixelCount);
+            int maxP = GetMax(values, upperPixelCount);
+
+            return new int[] { minP, maxP };
+        }
+
+        //get minimum value.
+        private int GetMin(int[] values, int lowerPixelCount)
+        {
+            int count = 0;
+            int minP = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > 0)
+                {
+                    count += values[i];
+                    minP = i;
+                    if (count >= lowerPixelCount) break;
+                }
+            }
+            return minP;
+        }
+
+        //get maximum value
+        private int GetMax(int[] values, int upperPixelCount)
+        {
+            int count = 0;
+            int maxP = 0;
+            for (int i = 255; i >= 0; i--)
+            {
+                if (values[i] > 0)
+                {
+                    count += values[i];
+                    maxP = i;
+                    if (count >= upperPixelCount) break;
+                }
+            }
+            return maxP;
+        }
+
+        //Draw Histogram
+        public void Draw(Bitmap bitmap, string colorMode, string color)
         {
             Dictionary<string, int[]> values = new Dictionary<string, int[]>();
 
             switch (colorMode)
             {
-               case "CMYK":
+                case "CMYK":
                     values = this.ValueCollectionCMYK;
                     break;
                 case "RGB":
@@ -134,91 +224,6 @@ namespace LogicLayer
                     }
                 }
             }
-        }
-
-        public Bitmap Stretch(int lowerLimit, int upperLimit)
-        {
-            Bitmap stretched = new Bitmap(OriginalImage);
-
-            int[] red = GetMinMax(this.ValueCollectionRGB["R"], lowerLimit, upperLimit);
-            int[] green = GetMinMax(this.ValueCollectionRGB["G"], lowerLimit, upperLimit);
-            int[] blue = GetMinMax(this.ValueCollectionRGB["B"], lowerLimit, upperLimit);
-
-            int min = Math.Min(red[0], Math.Min(green[0], blue[0]));
-            int max = Math.Min(red[1], Math.Min(green[1], blue[1]));
-
-            for (int i = 0; i < stretched.Width; i++)
-            {
-                for (int j = 0; j < stretched.Height; j++)
-                {
-                    Color color = stretched.GetPixel(i, j);
-                    /*
-                    int r = (int)((color.R - red[0]) * (255 / (float)(red[1] - red[0])));
-                    int g = (int)((color.G - green[0]) * (255 / (float)(green[1] - green[0])));
-                    int b = (int)((color.B - blue[0]) * (255 / (float)(blue[1] - blue[0])));
-                    */
-                    int r = (int)((color.R - min) * (255 / (float)(max - min)));
-                    int g = (int)((color.G - min) * (255 / (float)(max - min)));
-                    int b = (int)((color.B - min) * (255 / (float)(max - min)));
-
-
-                    if (r > 255) r = 255;
-                    if (r < 0) r = 0;
-                    if (g > 255) g = 255;
-                    if (g < 0) g = 0;
-                    if (b > 255) b = 255;
-                    if (b < 0) b = 0;
-
-                    Color colorNew = Color.FromArgb(r, g, b);
-                    stretched.SetPixel(i, j, colorNew);
-                }
-            }
-
-            return stretched;
-        }
-
-        private int[] GetMinMax(int[] values, int lower, int upper)
-        {
-            int pixels = OriginalImage.Width * OriginalImage.Height;
-            int lowerPixelCount = (int)Math.Round(pixels * (lower/100.0), 0);
-            int upperPixelCount = (int)pixels - (int)Math.Round(pixels * (upper/100.0), 0);
-
-            int minP = GetMin(values, lowerPixelCount);
-            int maxP = GetMax(values, upperPixelCount);
-
-            return new int[] { minP, maxP };
-        }
-
-        private int GetMin(int[] values, int lowerPixelCount)
-        {
-            int count = 0;
-            int minP = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > 0)
-                {
-                    count += values[i];
-                    minP = i;
-                    if (count >= lowerPixelCount) break;
-                }
-            }
-            return minP;
-        }
-
-        private int GetMax(int[] values, int upperPixelCount)
-        {
-            int count = 0;
-            int maxP = 0;
-            for (int i = 255; i >= 0; i--)
-            {
-                if (values[i] > 0)
-                {
-                    count += values[i];
-                    maxP = i;
-                    if (count >= upperPixelCount) break;
-                }
-            }
-            return maxP;
         }
     }
 }
