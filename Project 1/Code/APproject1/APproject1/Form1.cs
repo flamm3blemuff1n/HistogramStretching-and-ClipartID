@@ -67,6 +67,9 @@ namespace APproject1 {
 
         private void buttonHistogramOrignal_Click(object sender, EventArgs e)
         {
+            
+
+
             string color = this.comboBoxOptionOriginal.SelectedItem.ToString();
             string colorMode = this.comboBoxModeOriginal.SelectedItem.ToString();
             this.pictureBoxHistogramOriginal.Image = new Bitmap(1920, 1080);
@@ -75,6 +78,9 @@ namespace APproject1 {
 
             histogram.Draw(bitmap, colorMode, color);
 
+            this.pictureBoxHistogramOriginal.Refresh();
+            bitmap.Dispose();
+
             if (this.isStretched)
             {
                 this.pictureBoxHistogramStretched.Image = new Bitmap(1920, 1080);
@@ -82,10 +88,9 @@ namespace APproject1 {
                 using (var g = Graphics.FromImage(bitmapStretch)) g.Clear(Color.White);
 
                 histogramStretched.Draw(bitmapStretch, colorMode, color);
+                this.pictureBoxHistogramStretched.Refresh();
+                bitmapStretch.Dispose();
             }
-
-            this.pictureBoxHistogramStretched.Refresh();
-            this.pictureBoxHistogramOriginal.Refresh();
         }
 
         private void buttonStretch_Click(object sender, EventArgs e)
