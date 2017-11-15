@@ -42,6 +42,7 @@ namespace LogicLayer
                 }
             }
 
+            //fix small histogram with cmyk, lots of 0 values making the histogram very small;
             foreach (string mode in new string[] { "AVG", "C", "M", "Y", "K" })
             {
                 this.ValueCollectionCMYK[mode][0] = 0;
