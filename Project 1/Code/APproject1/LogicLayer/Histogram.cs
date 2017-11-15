@@ -14,13 +14,19 @@ namespace LogicLayer
         private Dictionary<string, int[]> ValueCollectionRGB;
         private Dictionary<string, int[]> ValueCollectionCMYK;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="bitmap">Image to make histogram from and stretch</param>
         public Histogram(Bitmap bitmap)
         {
             this.OriginalImage = bitmap;
             CalculateHistogram();
         }
 
-        //Calculate Amount of pixels per luminosity value for RGB and CMYK.
+        /// <summary>
+        /// Calculate the histogram
+        /// </summary>
         private void CalculateHistogram()
         {
             InitValues();
@@ -42,7 +48,9 @@ namespace LogicLayer
             }
         }
 
-        //Initialize dictionaries for all values calculatted by CalculateHistogram.
+        /// <summary>
+        /// Intialize all the dictionaries for the RGB and CMYK values
+        /// </summary>
         private void InitValues()
         {
             this.ValueCollectionRGB = new Dictionary<string, int[]>();
@@ -62,7 +70,10 @@ namespace LogicLayer
             }
         }
 
-        //Add RGB values to dictionary.
+        /// <summary>
+        /// Add RGB values to dictionary
+        /// </summary>
+        /// <param name="color">Color value</param>
         private void AddRgbColor(Color color)
         {
             this.ValueCollectionRGB["R"][color.R]++;
@@ -72,7 +83,10 @@ namespace LogicLayer
             this.ValueCollectionRGB["LUM"][Math.Max(color.R, Math.Max(color.G, color.B))]++;
         }
 
-        //Add CMYK values to dictionary.
+        /// <summary>
+        /// Add CMYK values to dictionary
+        /// </summary>
+        /// <param name="color">Color value</param>
         private void AddCmykColor(Color color)
         {
             int[] values = ConvertRgbToCmyk(color);
@@ -84,7 +98,11 @@ namespace LogicLayer
             this.ValueCollectionCMYK["AVG"][(values[0] + values[1] + values[2] + values[3]) / 4]++;
         }
 
-        //Convert RGB color Values to CMYK color values.
+        /// <summary>
+        /// Convert RGB to CMYK
+        /// </summary>
+        /// <param name="color">the color value</param>
+        /// <returns>CMYK values</returns>
         private int[] ConvertRgbToCmyk(Color color)
         {
             double red = color.R / 255.0;
@@ -108,7 +126,12 @@ namespace LogicLayer
             return new int[] { cyan, magenta, yellow, key};
         }
 
-        //Stretch Original Image.
+        /// <summary>
+        /// Stretch original image
+        /// </summary>
+        /// <param name="lowerLimit">Amount of pixels in percent to ignore for lower border</param>
+        /// <param name="upperLimit">Amount of pixels in percent to ignore for upper border</param>
+        /// <returns>Stretched image</returns>
         public Bitmap Stretch(int lowerLimit, int upperLimit)
         {
             Bitmap stretched = new Bitmap(OriginalImage);
@@ -145,7 +168,13 @@ namespace LogicLayer
             return stretched;
         }
 
-        //Get minimum and maximum value for a color component.
+        /// <summary>
+        /// Get minimum and maximum border value for a color component
+        /// </summary>
+        /// <param name="values">All values from a specific Color component</param>
+        /// <param name="lower">Amount of pixels in percent to ignore for lower border</param>
+        /// <param name="upper">Amount of pixels in percent to ignore for upper border</param>
+        /// <returns>Lower and Upper border for a Color component</returns>
         private int[] GetMinMax(int[] values, int lower, int upper)
         {
             int pixels = OriginalImage.Width * OriginalImage.Height;
@@ -158,7 +187,12 @@ namespace LogicLayer
             return new int[] { minP, maxP };
         }
 
-        //get minimum value.
+        /// <summary>
+        /// Get minimum value for a border.
+        /// </summary>
+        /// <param name="values">All values from a specific Color component</param>
+        /// <param name="lowerPixelCount">Amount of pixels to ignore</param>
+        /// <returns>Minumum border</returns>
         private int GetMin(int[] values, int lowerPixelCount)
         {
             int count = 0;
@@ -175,7 +209,12 @@ namespace LogicLayer
             return minP;
         }
 
-        //get maximum value
+        /// <summary>
+        /// Get maximum value for a border
+        /// </summary>
+        /// <param name="values">All values from a specific Color component</param>
+        /// <param name="upperPixelCount">Amount of pixels to ignore</param>
+        /// <returns>Maximum border</returns>
         private int GetMax(int[] values, int upperPixelCount)
         {
             int count = 0;
@@ -192,7 +231,12 @@ namespace LogicLayer
             return maxP;
         }
 
-        //Draw Histogram
+        /// <summary>
+        /// Draw an histogram
+        /// </summary>
+        /// <param name="bitmap">Bitmap to draw on</param>
+        /// <param name="colorMode">What color mode to use</param>
+        /// <param name="color">What color component to use</param>
         public void Draw(Bitmap bitmap, string colorMode, string color)
         {
             Dictionary<string, int[]> values = new Dictionary<string, int[]>();

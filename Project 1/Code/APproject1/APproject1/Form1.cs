@@ -33,7 +33,9 @@ namespace APproject1 {
             this.comboBoxOptionOriginal.DataSource = new string[] { "LUM", "AVG", "R", "G", "B"};
         }
 
-        //Reset Form to initial layout
+        /// <summary>
+        /// Reset Form to inital layout
+        /// </summary>
         private void ResetForm()
         {
             this.buttonStretch.Enabled = false;
@@ -45,7 +47,9 @@ namespace APproject1 {
             this.isStretched = false;
         }
 
-        //Start Stretch
+        /// <summary>
+        /// Stretch Image Histogram
+        /// </summary>
         private void Stretch()
         {
             this.labelLoading.Visible = true;
@@ -58,7 +62,9 @@ namespace APproject1 {
             if (isStretched) this.labelLoading.Visible = false;
         }
 
-        //Start creation of histogram
+        /// <summary>
+        /// Create Histograms
+        /// </summary>
         private void CreateHistogram()
         {
             if (BitmapTemp != null) BitmapTemp.Dispose();
@@ -83,6 +89,20 @@ namespace APproject1 {
 
                 HistogramStretched.Draw(BitmapStretchTemp, colorMode, color);
                 this.pictureBoxHistogramStretched.Refresh();
+            }
+        }
+
+        /// <summary>
+        /// Update the form when values are changed
+        /// </summary>
+        private void UpdateForm()
+        {
+            if (this.isStretched == true)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                Stretch();
+                CreateHistogram();
+                Cursor.Current = Cursors.Default;
             }
         }
 
@@ -145,18 +165,6 @@ namespace APproject1 {
         private void numericUpDownUpper_ValueChanged(object sender, EventArgs e)
         {
             UpdateForm();
-        }
-
-        //Update Stretched Image and Histogram after values changed
-        private void UpdateForm()
-        {
-            if (this.isStretched == true)
-            {
-                Cursor.Current = Cursors.WaitCursor;
-                Stretch();
-                CreateHistogram();
-                Cursor.Current = Cursors.Default;
-            }
         }
     }
 }
