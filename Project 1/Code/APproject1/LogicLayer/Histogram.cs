@@ -105,6 +105,7 @@ namespace LogicLayer
         /// <returns>CMYK values</returns>
         private int[] ConvertRgbToCmyk(Color color)
         {
+            //formulas: http://www.rapidtables.com/convert/color/rgb-to-cmyk.htm
             double red = color.R / 255.0;
             double green = color.G / 255.0;
             double blue = color.B / 255.0;
@@ -149,6 +150,7 @@ namespace LogicLayer
                 {
                     Color color = stretched.GetPixel(i, j);
 
+                    //formulas: https://homepages.inf.ed.ac.uk/rbf/HIPR2/stretch.htm
                     int r = (int)((color.R - min) * (255 / (float)(max - min)));
                     int g = (int)((color.G - min) * (255 / (float)(max - min)));
                     int b = (int)((color.B - min) * (255 / (float)(max - min)));
