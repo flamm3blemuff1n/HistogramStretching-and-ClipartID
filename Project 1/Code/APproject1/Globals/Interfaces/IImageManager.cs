@@ -9,6 +9,7 @@ namespace Globals.Interfaces
     public interface IImageManager
     {
         string CurrentImagePath { get; }
+        string ImageName { get; }
 
         void SelectImagePath(string path);
     }

@@ -29,34 +29,32 @@
             this.pictureBoxHistogramStretched = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonLoadImage = new System.Windows.Forms.Button();
-            this.labelLoading = new System.Windows.Forms.Label();
-            this.pictureBoxHistogramOriginal = new System.Windows.Forms.PictureBox();
-            this.pictureBoxOriginal = new System.Windows.Forms.PictureBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonHistogramOrignal = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBoxModeOriginal = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBoxOptionOriginal = new System.Windows.Forms.ComboBox();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonStretch = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDownLower = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDownUpper = new System.Windows.Forms.NumericUpDown();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBoxHistogramOriginal = new System.Windows.Forms.PictureBox();
+            this.pictureBoxOriginal = new System.Windows.Forms.PictureBox();
+            this.labelLoading = new System.Windows.Forms.Label();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonHistogramOrignal = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBoxModeOriginal = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBoxOptionOriginal = new System.Windows.Forms.ComboBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.textBoxImageName = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStretched)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramStretched)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramOriginal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).BeginInit();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLower)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUpper)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramOriginal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).BeginInit();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -66,12 +64,10 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.pictureBoxStretched, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.pictureBoxHistogramStretched, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBoxHistogramOriginal, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.pictureBoxOriginal, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel4, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -87,9 +83,9 @@
             // 
             this.pictureBoxStretched.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxStretched.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxStretched.Location = new System.Drawing.Point(545, 36);
+            this.pictureBoxStretched.Location = new System.Drawing.Point(545, 66);
             this.pictureBoxStretched.Name = "pictureBoxStretched";
-            this.pictureBoxStretched.Size = new System.Drawing.Size(536, 241);
+            this.pictureBoxStretched.Size = new System.Drawing.Size(536, 226);
             this.pictureBoxStretched.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxStretched.TabIndex = 5;
             this.pictureBoxStretched.TabStop = false;
@@ -98,25 +94,28 @@
             // 
             this.pictureBoxHistogramStretched.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxHistogramStretched.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxHistogramStretched.Location = new System.Drawing.Point(545, 316);
+            this.pictureBoxHistogramStretched.Location = new System.Drawing.Point(545, 331);
             this.pictureBoxHistogramStretched.Name = "pictureBoxHistogramStretched";
-            this.pictureBoxHistogramStretched.Size = new System.Drawing.Size(536, 242);
+            this.pictureBoxHistogramStretched.Size = new System.Drawing.Size(536, 227);
             this.pictureBoxHistogramStretched.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxHistogramStretched.TabIndex = 3;
             this.pictureBoxHistogramStretched.TabStop = false;
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.flowLayoutPanel1, 3);
             this.flowLayoutPanel1.Controls.Add(this.buttonLoadImage);
+            this.flowLayoutPanel1.Controls.Add(this.textBoxImageName);
+            this.flowLayoutPanel1.Controls.Add(this.labelLoading);
             this.flowLayoutPanel1.Controls.Add(this.buttonStretch);
             this.flowLayoutPanel1.Controls.Add(this.label1);
             this.flowLayoutPanel1.Controls.Add(this.numericUpDownLower);
             this.flowLayoutPanel1.Controls.Add(this.label2);
             this.flowLayoutPanel1.Controls.Add(this.numericUpDownUpper);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(536, 27);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1078, 57);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // buttonLoadImage
@@ -129,25 +128,75 @@
             this.buttonLoadImage.UseVisualStyleBackColor = true;
             this.buttonLoadImage.Click += new System.EventHandler(this.buttonLoadImage_Click);
             // 
-            // labelLoading
+            // buttonStretch
             // 
-            this.labelLoading.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLoading.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelLoading.Location = new System.Drawing.Point(3, 0);
-            this.labelLoading.Name = "labelLoading";
-            this.labelLoading.Size = new System.Drawing.Size(153, 27);
-            this.labelLoading.TabIndex = 1;
-            this.labelLoading.Text = "Loading please wait";
-            this.labelLoading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelLoading.Visible = false;
+            this.buttonStretch.Enabled = false;
+            this.buttonStretch.Location = new System.Drawing.Point(3, 32);
+            this.buttonStretch.Name = "buttonStretch";
+            this.buttonStretch.Size = new System.Drawing.Size(118, 23);
+            this.buttonStretch.TabIndex = 6;
+            this.buttonStretch.Text = "Stretch Histogram";
+            this.buttonStretch.UseVisualStyleBackColor = true;
+            this.buttonStretch.Click += new System.EventHandler(this.buttonStretch_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(127, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(97, 29);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Lower Percentage:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.label1, "The amount of pixels in percent that will be below the lowest border");
+            // 
+            // numericUpDownLower
+            // 
+            this.numericUpDownLower.Location = new System.Drawing.Point(230, 32);
+            this.numericUpDownLower.Name = "numericUpDownLower";
+            this.numericUpDownLower.Size = new System.Drawing.Size(44, 20);
+            this.numericUpDownLower.TabIndex = 3;
+            this.numericUpDownLower.Tag = "";
+            this.toolTip1.SetToolTip(this.numericUpDownLower, "The amount of pixels in percent that will be below the lowest border");
+            this.numericUpDownLower.ValueChanged += new System.EventHandler(this.numericUpDownLower_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(280, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 29);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Upper Percentage:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.label2, "The amount of pixels in percent that will be below the highest border");
+            // 
+            // numericUpDownUpper
+            // 
+            this.numericUpDownUpper.Location = new System.Drawing.Point(383, 32);
+            this.numericUpDownUpper.Name = "numericUpDownUpper";
+            this.numericUpDownUpper.Size = new System.Drawing.Size(44, 20);
+            this.numericUpDownUpper.TabIndex = 4;
+            this.numericUpDownUpper.Tag = "";
+            this.toolTip1.SetToolTip(this.numericUpDownUpper, "The amount of pixels in percent that will be below the highest border");
+            this.numericUpDownUpper.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDownUpper.ValueChanged += new System.EventHandler(this.numericUpDownUpper_ValueChanged);
             // 
             // pictureBoxHistogramOriginal
             // 
             this.pictureBoxHistogramOriginal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxHistogramOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxHistogramOriginal.Location = new System.Drawing.Point(3, 316);
+            this.pictureBoxHistogramOriginal.Location = new System.Drawing.Point(3, 331);
             this.pictureBoxHistogramOriginal.Name = "pictureBoxHistogramOriginal";
-            this.pictureBoxHistogramOriginal.Size = new System.Drawing.Size(536, 242);
+            this.pictureBoxHistogramOriginal.Size = new System.Drawing.Size(536, 227);
             this.pictureBoxHistogramOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxHistogramOriginal.TabIndex = 2;
             this.pictureBoxHistogramOriginal.TabStop = false;
@@ -156,21 +205,36 @@
             // 
             this.pictureBoxOriginal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxOriginal.Location = new System.Drawing.Point(3, 36);
+            this.pictureBoxOriginal.Location = new System.Drawing.Point(3, 66);
             this.pictureBoxOriginal.Name = "pictureBoxOriginal";
-            this.pictureBoxOriginal.Size = new System.Drawing.Size(536, 241);
+            this.pictureBoxOriginal.Size = new System.Drawing.Size(536, 226);
             this.pictureBoxOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxOriginal.TabIndex = 1;
             this.pictureBoxOriginal.TabStop = false;
             // 
-            // flowLayoutPanel2
+            // labelLoading
             // 
-            this.flowLayoutPanel2.Controls.Add(this.labelLoading);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(545, 3);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(536, 27);
-            this.flowLayoutPanel2.TabIndex = 4;
+            this.flowLayoutPanel1.SetFlowBreak(this.labelLoading, true);
+            this.labelLoading.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLoading.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelLoading.Location = new System.Drawing.Point(433, 0);
+            this.labelLoading.Name = "labelLoading";
+            this.labelLoading.Size = new System.Drawing.Size(467, 26);
+            this.labelLoading.TabIndex = 1;
+            this.labelLoading.Text = "LoadingText";
+            this.labelLoading.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.buttonHistogramOrignal);
+            this.flowLayoutPanel3.Controls.Add(this.label3);
+            this.flowLayoutPanel3.Controls.Add(this.comboBoxModeOriginal);
+            this.flowLayoutPanel3.Controls.Add(this.label4);
+            this.flowLayoutPanel3.Controls.Add(this.comboBoxOptionOriginal);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 298);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(536, 27);
+            this.flowLayoutPanel3.TabIndex = 7;
             // 
             // buttonHistogramOrignal
             // 
@@ -226,88 +290,7 @@
             this.comboBoxOptionOriginal.Name = "comboBoxOptionOriginal";
             this.comboBoxOptionOriginal.Size = new System.Drawing.Size(49, 21);
             this.comboBoxOptionOriginal.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.comboBoxOptionOriginal, "Select the color component or value of a color model that the histogram should re" +
-        "present.");
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.buttonHistogramOrignal);
-            this.flowLayoutPanel3.Controls.Add(this.label3);
-            this.flowLayoutPanel3.Controls.Add(this.comboBoxModeOriginal);
-            this.flowLayoutPanel3.Controls.Add(this.label4);
-            this.flowLayoutPanel3.Controls.Add(this.comboBoxOptionOriginal);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 283);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(536, 27);
-            this.flowLayoutPanel3.TabIndex = 7;
-            // 
-            // buttonStretch
-            // 
-            this.buttonStretch.Enabled = false;
-            this.buttonStretch.Location = new System.Drawing.Point(84, 3);
-            this.buttonStretch.Name = "buttonStretch";
-            this.buttonStretch.Size = new System.Drawing.Size(118, 23);
-            this.buttonStretch.TabIndex = 6;
-            this.buttonStretch.Text = "Stretch Histogram";
-            this.buttonStretch.UseVisualStyleBackColor = true;
-            this.buttonStretch.Click += new System.EventHandler(this.buttonStretch_Click);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(208, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 29);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Lower Percentage:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // numericUpDownLower
-            // 
-            this.numericUpDownLower.Location = new System.Drawing.Point(311, 3);
-            this.numericUpDownLower.Name = "numericUpDownLower";
-            this.numericUpDownLower.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDownLower.TabIndex = 3;
-            this.numericUpDownLower.Tag = "";
-            this.toolTip1.SetToolTip(this.numericUpDownLower, "The amount of pixels in percent that will be ignored to \r\nset the lower border");
-            this.numericUpDownLower.ValueChanged += new System.EventHandler(this.numericUpDownLower_ValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(361, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 29);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Upper Percentage:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // numericUpDownUpper
-            // 
-            this.numericUpDownUpper.Location = new System.Drawing.Point(464, 3);
-            this.numericUpDownUpper.Name = "numericUpDownUpper";
-            this.numericUpDownUpper.Size = new System.Drawing.Size(44, 20);
-            this.numericUpDownUpper.TabIndex = 4;
-            this.numericUpDownUpper.Tag = "";
-            this.toolTip1.SetToolTip(this.numericUpDownUpper, "The amount of pixels in percent that will be ignored set the upper border");
-            this.numericUpDownUpper.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numericUpDownUpper.ValueChanged += new System.EventHandler(this.numericUpDownUpper_ValueChanged);
-            // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(545, 283);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(536, 27);
-            this.flowLayoutPanel4.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.comboBoxOptionOriginal, "Select the component from a ColorModel that the histogram should represent.\r\n");
             // 
             // openFileDialog1
             // 
@@ -320,6 +303,15 @@
             this.toolTip1.InitialDelay = 250;
             this.toolTip1.ReshowDelay = 50;
             // 
+            // textBoxImageName
+            // 
+            this.textBoxImageName.Enabled = false;
+            this.textBoxImageName.Location = new System.Drawing.Point(84, 3);
+            this.textBoxImageName.Name = "textBoxImageName";
+            this.textBoxImageName.Size = new System.Drawing.Size(343, 20);
+            this.textBoxImageName.TabIndex = 9;
+            this.textBoxImageName.Text = "No image loaded! Use the \"Load Image\" button first.";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -330,17 +322,17 @@
             this.Name = "Form1";
             this.Text = "HistogramStretcher";
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStretched)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramStretched)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramOriginal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).EndInit();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLower)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUpper)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramOriginal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).EndInit();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -354,13 +346,11 @@
         private System.Windows.Forms.PictureBox pictureBoxOriginal;
         private System.Windows.Forms.PictureBox pictureBoxHistogramStretched;
         private System.Windows.Forms.PictureBox pictureBoxHistogramOriginal;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button buttonHistogramOrignal;
         private System.Windows.Forms.ComboBox comboBoxOptionOriginal;
         private System.Windows.Forms.PictureBox pictureBoxStretched;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button buttonStretch;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.ComboBox comboBoxModeOriginal;
         private System.Windows.Forms.Label labelLoading;
         private System.Windows.Forms.NumericUpDown numericUpDownLower;
@@ -370,6 +360,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TextBox textBoxImageName;
     }
 }
 

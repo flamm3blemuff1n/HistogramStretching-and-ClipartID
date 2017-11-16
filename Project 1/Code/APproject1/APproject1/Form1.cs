@@ -31,6 +31,7 @@ namespace APproject1 {
 
             this.comboBoxModeOriginal.DataSource = new String[] { "RGB", "CMYK"};
             this.comboBoxOptionOriginal.DataSource = new string[] { "LUM", "AVG", "R", "G", "B"};
+            ResetForm();
         }
 
         /// <summary>
@@ -38,6 +39,8 @@ namespace APproject1 {
         /// </summary>
         private void ResetForm()
         {
+            this.labelLoading.Text = "";
+            this.textBoxImageName.Text = "No image loaded! Use the \"Load Image\" button first.";
             this.buttonStretch.Enabled = false;
             this.buttonHistogramOrignal.Enabled = false;
             this.pictureBoxHistogramOriginal.Image = null;
@@ -52,14 +55,17 @@ namespace APproject1 {
         /// </summary>
         private void Stretch()
         {
-            this.labelLoading.Visible = true;
+            this.labelLoading.Text = "Stretching Histogram from image...";
             this.Update();
+
             int lower = (int)this.numericUpDownLower.Value;
             int upper = (int)this.numericUpDownUpper.Value;
             this.pictureBoxStretched.Image = Histogram.Stretch(lower, upper);
+
             HistogramStretched = new Histogram((Bitmap)this.pictureBoxStretched.Image);
+
             this.isStretched = true;
-            if (isStretched) this.labelLoading.Visible = false;
+            this.labelLoading.Text = "";
         }
 
         /// <summary>
@@ -88,6 +94,7 @@ namespace APproject1 {
                 using (var g = Graphics.FromImage(BitmapStretchTemp)) g.Clear(Color.White);
 
                 HistogramStretched.Draw(BitmapStretchTemp, colorMode, color);
+
                 this.pictureBoxHistogramStretched.Refresh();
             }
         }
@@ -110,7 +117,7 @@ namespace APproject1 {
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK) {
                 ResetForm();
-                this.labelLoading.Visible = true;
+                this.labelLoading.Text = "Loading image...";
                 Cursor.Current = Cursors.WaitCursor;
                 this.Update();
 
@@ -122,15 +129,16 @@ namespace APproject1 {
                 catch (ArgumentException ex)
                 {
                     Console.WriteLine("Not an image" + ex);
-                    this.labelLoading.Visible = false;
+                    this.labelLoading.Text = "";
                     return;
                 }
                 pictureBoxOriginal.Image = OriginalImage;
                 Histogram = new Histogram(OriginalImage);
 
+                this.textBoxImageName.Text = ImageManager.ImageName;
                 this.buttonHistogramOrignal.Enabled = true;
                 this.buttonStretch.Enabled = true;
-                this.labelLoading.Visible = false;
+                this.labelLoading.Text = "";
                 Cursor.Current = Cursors.Default;
             }
         }
@@ -145,18 +153,6 @@ namespace APproject1 {
             Stretch();
         }
 
-        private void comboBoxModeOriginal_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (this.comboBoxModeOriginal.SelectedItem.ToString().Equals("RGB"))
-            {
-                this.comboBoxOptionOriginal.DataSource = new string[] {"LUM", "AVG", "R", "G", "B" };
-            }
-            else if (this.comboBoxModeOriginal.SelectedItem.ToString().Equals("CMYK"))
-            {
-                this.comboBoxOptionOriginal.DataSource = new string[] { "AVG", "C", "M", "Y", "K" };
-            }
-        }
-
         private void numericUpDownLower_ValueChanged(object sender, EventArgs e)
         {
             UpdateForm();
@@ -165,6 +161,18 @@ namespace APproject1 {
         private void numericUpDownUpper_ValueChanged(object sender, EventArgs e)
         {
             UpdateForm();
+        }
+
+        private void comboBoxModeOriginal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.comboBoxModeOriginal.SelectedItem.ToString().Equals("RGB"))
+            {
+                this.comboBoxOptionOriginal.DataSource = new string[] { "LUM", "AVG", "R", "G", "B" };
+            }
+            else if (this.comboBoxModeOriginal.SelectedItem.ToString().Equals("CMYK"))
+            {
+                this.comboBoxOptionOriginal.DataSource = new string[] { "AVG", "C", "M", "Y", "K" };
+            }
         }
     }
 }
