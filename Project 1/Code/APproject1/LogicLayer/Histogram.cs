@@ -42,8 +42,19 @@ namespace LogicLayer
                 }
             }
 
+            
+            for (int i = 0; i <= 255; i++)
+            {
+                this.ValueCollectionRGB["RGB"][i] = this.ValueCollectionRGB["R"][i] + this.ValueCollectionRGB["G"][i] + this.ValueCollectionRGB["B"][i];
+            }
+
+            for (int i =0; i <= 1000; i++)
+            {
+                this.ValueCollectionCMYK["CMYK"][i] = this.ValueCollectionCMYK["C"][i] + this.ValueCollectionCMYK["M"][i] + this.ValueCollectionCMYK["Y"][i] + this.ValueCollectionCMYK["K"][i];
+            }
+
             //fix small histogram with cmyk, lots of 0 values making the histogram very small;
-            foreach (string mode in new string[] { "AVG", "C", "M", "Y", "K" })
+            foreach (string mode in new string[] { "CMYK", "C", "M", "Y", "K" })
             {
                 this.ValueCollectionCMYK[mode][0] = 0;
             }
@@ -55,7 +66,7 @@ namespace LogicLayer
         private void InitValues()
         {
             this.ValueCollectionRGB = new Dictionary<string, int[]>();
-            string[] modes = new string[] { "AVG", "LUM", "R", "G", "B" };
+            string[] modes = new string[] { "RGB", "LUM", "R", "G", "B" };
 
             foreach (string mode in modes)
             {
@@ -63,7 +74,7 @@ namespace LogicLayer
             }
 
             this.ValueCollectionCMYK = new Dictionary<string, int[]>();
-            modes = new string[] { "AVG", "C", "M", "Y", "K" };
+            modes = new string[] { "CMYK", "C", "M", "Y", "K" };
 
             foreach (string mode in modes)
             {
@@ -80,8 +91,8 @@ namespace LogicLayer
             this.ValueCollectionRGB["R"][color.R]++;
             this.ValueCollectionRGB["G"][color.G]++;
             this.ValueCollectionRGB["B"][color.B]++;
-            this.ValueCollectionRGB["AVG"][(color.R + color.G + color.B) / 3]++;
-            this.ValueCollectionRGB["LUM"][Math.Max(color.R, Math.Max(color.G, color.B))]++;
+            //formula http://geraldbakker.nl/psnumbers/histograms-1.html
+            this.ValueCollectionRGB["LUM"][(int)(0.3 * color.R + 0.59 * color.G + 0.11 * color.B)]++;
         }
 
         /// <summary>
@@ -96,7 +107,6 @@ namespace LogicLayer
             this.ValueCollectionCMYK["M"][values[1]]++;
             this.ValueCollectionCMYK["Y"][values[2]]++;
             this.ValueCollectionCMYK["K"][values[3]]++;
-            this.ValueCollectionCMYK["AVG"][(values[0] + values[1] + values[2] + values[3]) / 4]++;
         }
 
         /// <summary>

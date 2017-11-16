@@ -30,7 +30,7 @@ namespace APproject1 {
             ImageManager = new ImageManager("");
 
             this.comboBoxModeOriginal.DataSource = new String[] { "RGB", "CMYK"};
-            this.comboBoxOptionOriginal.DataSource = new string[] { "LUM", "AVG", "R", "G", "B"};
+            this.comboBoxOptionOriginal.DataSource = new string[] { "LUM", "RGB", "R", "G", "B"};
             ResetForm();
         }
 
@@ -167,11 +167,11 @@ namespace APproject1 {
         {
             if (this.comboBoxModeOriginal.SelectedItem.ToString().Equals("RGB"))
             {
-                this.comboBoxOptionOriginal.DataSource = new string[] { "LUM", "AVG", "R", "G", "B" };
+                this.comboBoxOptionOriginal.DataSource = new string[] { "LUM", "RGB", "R", "G", "B" };
             }
             else if (this.comboBoxModeOriginal.SelectedItem.ToString().Equals("CMYK"))
             {
-                this.comboBoxOptionOriginal.DataSource = new string[] { "AVG", "C", "M", "Y", "K" };
+                this.comboBoxOptionOriginal.DataSource = new string[] { "CMYK", "C", "M", "Y", "K" };
             }
         }
     }
