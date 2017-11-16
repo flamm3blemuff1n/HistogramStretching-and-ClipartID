@@ -27,34 +27,34 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxStretched = new System.Windows.Forms.PictureBox();
             this.pictureBoxHistogramStretched = new System.Windows.Forms.PictureBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonLoadImage = new System.Windows.Forms.Button();
-            this.buttonStretch = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDownLower = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDownUpper = new System.Windows.Forms.NumericUpDown();
             this.pictureBoxHistogramOriginal = new System.Windows.Forms.PictureBox();
             this.pictureBoxOriginal = new System.Windows.Forms.PictureBox();
-            this.labelLoading = new System.Windows.Forms.Label();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonHistogramOrignal = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxModeOriginal = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxOptionOriginal = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonLoadImage = new System.Windows.Forms.Button();
+            this.textBoxImageName = new System.Windows.Forms.TextBox();
+            this.labelLoading = new System.Windows.Forms.Label();
+            this.buttonStretch = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDownLower = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDownUpper = new System.Windows.Forms.NumericUpDown();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.textBoxImageName = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStretched)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramStretched)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLower)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUpper)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramOriginal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).BeginInit();
             this.flowLayoutPanel3.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLower)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUpper)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -83,7 +83,7 @@
             // 
             this.pictureBoxStretched.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxStretched.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxStretched.Location = new System.Drawing.Point(545, 66);
+            this.pictureBoxStretched.Location = new System.Drawing.Point(545, 67);
             this.pictureBoxStretched.Name = "pictureBoxStretched";
             this.pictureBoxStretched.Size = new System.Drawing.Size(536, 226);
             this.pictureBoxStretched.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -94,12 +94,102 @@
             // 
             this.pictureBoxHistogramStretched.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBoxHistogramStretched.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxHistogramStretched.Location = new System.Drawing.Point(545, 331);
+            this.pictureBoxHistogramStretched.Location = new System.Drawing.Point(545, 332);
             this.pictureBoxHistogramStretched.Name = "pictureBoxHistogramStretched";
-            this.pictureBoxHistogramStretched.Size = new System.Drawing.Size(536, 227);
+            this.pictureBoxHistogramStretched.Size = new System.Drawing.Size(536, 226);
             this.pictureBoxHistogramStretched.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxHistogramStretched.TabIndex = 3;
             this.pictureBoxHistogramStretched.TabStop = false;
+            // 
+            // pictureBoxHistogramOriginal
+            // 
+            this.pictureBoxHistogramOriginal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBoxHistogramOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxHistogramOriginal.Location = new System.Drawing.Point(3, 332);
+            this.pictureBoxHistogramOriginal.Name = "pictureBoxHistogramOriginal";
+            this.pictureBoxHistogramOriginal.Size = new System.Drawing.Size(536, 226);
+            this.pictureBoxHistogramOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxHistogramOriginal.TabIndex = 2;
+            this.pictureBoxHistogramOriginal.TabStop = false;
+            // 
+            // pictureBoxOriginal
+            // 
+            this.pictureBoxOriginal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBoxOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxOriginal.Location = new System.Drawing.Point(3, 67);
+            this.pictureBoxOriginal.Name = "pictureBoxOriginal";
+            this.pictureBoxOriginal.Size = new System.Drawing.Size(536, 226);
+            this.pictureBoxOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxOriginal.TabIndex = 1;
+            this.pictureBoxOriginal.TabStop = false;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.Controls.Add(this.buttonHistogramOrignal);
+            this.flowLayoutPanel3.Controls.Add(this.label3);
+            this.flowLayoutPanel3.Controls.Add(this.comboBoxModeOriginal);
+            this.flowLayoutPanel3.Controls.Add(this.label4);
+            this.flowLayoutPanel3.Controls.Add(this.comboBoxOptionOriginal);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 299);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(536, 27);
+            this.flowLayoutPanel3.TabIndex = 7;
+            // 
+            // buttonHistogramOrignal
+            // 
+            this.buttonHistogramOrignal.Enabled = false;
+            this.buttonHistogramOrignal.Location = new System.Drawing.Point(3, 3);
+            this.buttonHistogramOrignal.Name = "buttonHistogramOrignal";
+            this.buttonHistogramOrignal.Size = new System.Drawing.Size(115, 23);
+            this.buttonHistogramOrignal.TabIndex = 0;
+            this.buttonHistogramOrignal.Text = "Create Histogram(s)";
+            this.buttonHistogramOrignal.UseVisualStyleBackColor = true;
+            this.buttonHistogramOrignal.Click += new System.EventHandler(this.buttonHistogramOrignal_Click);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(124, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 29);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "ColorModel:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBoxModeOriginal
+            // 
+            this.comboBoxModeOriginal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxModeOriginal.FormattingEnabled = true;
+            this.comboBoxModeOriginal.Location = new System.Drawing.Point(193, 3);
+            this.comboBoxModeOriginal.Name = "comboBoxModeOriginal";
+            this.comboBoxModeOriginal.Size = new System.Drawing.Size(60, 21);
+            this.comboBoxModeOriginal.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.comboBoxModeOriginal, "Select a color model that the histograms should represent.");
+            this.comboBoxModeOriginal.SelectedIndexChanged += new System.EventHandler(this.comboBoxModeOriginal_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(259, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 29);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Component:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBoxOptionOriginal
+            // 
+            this.comboBoxOptionOriginal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxOptionOriginal.FormattingEnabled = true;
+            this.comboBoxOptionOriginal.Location = new System.Drawing.Point(329, 3);
+            this.comboBoxOptionOriginal.Name = "comboBoxOptionOriginal";
+            this.comboBoxOptionOriginal.Size = new System.Drawing.Size(59, 21);
+            this.comboBoxOptionOriginal.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.comboBoxOptionOriginal, "Select the component from a ColorModel that the histogram should represent.\r\n");
             // 
             // flowLayoutPanel1
             // 
@@ -115,7 +205,7 @@
             this.flowLayoutPanel1.Controls.Add(this.numericUpDownUpper);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1078, 57);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(903, 58);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // buttonLoadImage
@@ -127,6 +217,27 @@
             this.buttonLoadImage.Text = "Load Image";
             this.buttonLoadImage.UseVisualStyleBackColor = true;
             this.buttonLoadImage.Click += new System.EventHandler(this.buttonLoadImage_Click);
+            // 
+            // textBoxImageName
+            // 
+            this.textBoxImageName.Enabled = false;
+            this.textBoxImageName.Location = new System.Drawing.Point(84, 3);
+            this.textBoxImageName.Name = "textBoxImageName";
+            this.textBoxImageName.Size = new System.Drawing.Size(343, 20);
+            this.textBoxImageName.TabIndex = 9;
+            this.textBoxImageName.Text = "No image loaded! Use the \"Load Image\" button first.";
+            // 
+            // labelLoading
+            // 
+            this.flowLayoutPanel1.SetFlowBreak(this.labelLoading, true);
+            this.labelLoading.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLoading.ForeColor = System.Drawing.Color.DarkRed;
+            this.labelLoading.Location = new System.Drawing.Point(433, 0);
+            this.labelLoading.Name = "labelLoading";
+            this.labelLoading.Size = new System.Drawing.Size(467, 26);
+            this.labelLoading.TabIndex = 1;
+            this.labelLoading.Text = "LoadingText";
+            this.labelLoading.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // buttonStretch
             // 
@@ -190,108 +301,6 @@
             0});
             this.numericUpDownUpper.ValueChanged += new System.EventHandler(this.numericUpDownUpper_ValueChanged);
             // 
-            // pictureBoxHistogramOriginal
-            // 
-            this.pictureBoxHistogramOriginal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBoxHistogramOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxHistogramOriginal.Location = new System.Drawing.Point(3, 331);
-            this.pictureBoxHistogramOriginal.Name = "pictureBoxHistogramOriginal";
-            this.pictureBoxHistogramOriginal.Size = new System.Drawing.Size(536, 227);
-            this.pictureBoxHistogramOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxHistogramOriginal.TabIndex = 2;
-            this.pictureBoxHistogramOriginal.TabStop = false;
-            // 
-            // pictureBoxOriginal
-            // 
-            this.pictureBoxOriginal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBoxOriginal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxOriginal.Location = new System.Drawing.Point(3, 66);
-            this.pictureBoxOriginal.Name = "pictureBoxOriginal";
-            this.pictureBoxOriginal.Size = new System.Drawing.Size(536, 226);
-            this.pictureBoxOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxOriginal.TabIndex = 1;
-            this.pictureBoxOriginal.TabStop = false;
-            // 
-            // labelLoading
-            // 
-            this.flowLayoutPanel1.SetFlowBreak(this.labelLoading, true);
-            this.labelLoading.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLoading.ForeColor = System.Drawing.Color.DarkRed;
-            this.labelLoading.Location = new System.Drawing.Point(433, 0);
-            this.labelLoading.Name = "labelLoading";
-            this.labelLoading.Size = new System.Drawing.Size(467, 26);
-            this.labelLoading.TabIndex = 1;
-            this.labelLoading.Text = "LoadingText";
-            this.labelLoading.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.Controls.Add(this.buttonHistogramOrignal);
-            this.flowLayoutPanel3.Controls.Add(this.label3);
-            this.flowLayoutPanel3.Controls.Add(this.comboBoxModeOriginal);
-            this.flowLayoutPanel3.Controls.Add(this.label4);
-            this.flowLayoutPanel3.Controls.Add(this.comboBoxOptionOriginal);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 298);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(536, 27);
-            this.flowLayoutPanel3.TabIndex = 7;
-            // 
-            // buttonHistogramOrignal
-            // 
-            this.buttonHistogramOrignal.Enabled = false;
-            this.buttonHistogramOrignal.Location = new System.Drawing.Point(3, 3);
-            this.buttonHistogramOrignal.Name = "buttonHistogramOrignal";
-            this.buttonHistogramOrignal.Size = new System.Drawing.Size(115, 23);
-            this.buttonHistogramOrignal.TabIndex = 0;
-            this.buttonHistogramOrignal.Text = "Create Histogram(s)";
-            this.buttonHistogramOrignal.UseVisualStyleBackColor = true;
-            this.buttonHistogramOrignal.Click += new System.EventHandler(this.buttonHistogramOrignal_Click);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(124, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 29);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "ColorModel:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // comboBoxModeOriginal
-            // 
-            this.comboBoxModeOriginal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxModeOriginal.FormattingEnabled = true;
-            this.comboBoxModeOriginal.Location = new System.Drawing.Point(193, 3);
-            this.comboBoxModeOriginal.Name = "comboBoxModeOriginal";
-            this.comboBoxModeOriginal.Size = new System.Drawing.Size(60, 21);
-            this.comboBoxModeOriginal.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.comboBoxModeOriginal, "Select a color model that the histograms should represent.");
-            this.comboBoxModeOriginal.SelectedIndexChanged += new System.EventHandler(this.comboBoxModeOriginal_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(259, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 29);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Component:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // comboBoxOptionOriginal
-            // 
-            this.comboBoxOptionOriginal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxOptionOriginal.FormattingEnabled = true;
-            this.comboBoxOptionOriginal.Location = new System.Drawing.Point(329, 3);
-            this.comboBoxOptionOriginal.Name = "comboBoxOptionOriginal";
-            this.comboBoxOptionOriginal.Size = new System.Drawing.Size(49, 21);
-            this.comboBoxOptionOriginal.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.comboBoxOptionOriginal, "Select the component from a ColorModel that the histogram should represent.\r\n");
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.Filter = "All files (*.*)|*.*|Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
@@ -302,15 +311,6 @@
             this.toolTip1.AutoPopDelay = 15000;
             this.toolTip1.InitialDelay = 250;
             this.toolTip1.ReshowDelay = 50;
-            // 
-            // textBoxImageName
-            // 
-            this.textBoxImageName.Enabled = false;
-            this.textBoxImageName.Location = new System.Drawing.Point(84, 3);
-            this.textBoxImageName.Name = "textBoxImageName";
-            this.textBoxImageName.Size = new System.Drawing.Size(343, 20);
-            this.textBoxImageName.TabIndex = 9;
-            this.textBoxImageName.Text = "No image loaded! Use the \"Load Image\" button first.";
             // 
             // Form1
             // 
@@ -325,14 +325,14 @@
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStretched)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramStretched)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLower)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUpper)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHistogramOriginal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).EndInit();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLower)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownUpper)).EndInit();
             this.ResumeLayout(false);
 
         }

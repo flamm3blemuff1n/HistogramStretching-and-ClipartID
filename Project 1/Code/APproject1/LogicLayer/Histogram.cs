@@ -42,7 +42,12 @@ namespace LogicLayer
                 }
             }
 
-            
+            //fix small histogram with cmyk, lots of 0 values making the histogram very small;
+            foreach (string mode in new string[] { "CMYK", "C", "M", "Y", "K" })
+            {
+                this.ValueCollectionCMYK[mode][0] = 0;
+            }
+
             for (int i = 0; i <= 255; i++)
             {
                 this.ValueCollectionRGB["RGB"][i] = this.ValueCollectionRGB["R"][i] + this.ValueCollectionRGB["G"][i] + this.ValueCollectionRGB["B"][i];
@@ -51,12 +56,6 @@ namespace LogicLayer
             for (int i =0; i <= 1000; i++)
             {
                 this.ValueCollectionCMYK["CMYK"][i] = this.ValueCollectionCMYK["C"][i] + this.ValueCollectionCMYK["M"][i] + this.ValueCollectionCMYK["Y"][i] + this.ValueCollectionCMYK["K"][i];
-            }
-
-            //fix small histogram with cmyk, lots of 0 values making the histogram very small;
-            foreach (string mode in new string[] { "CMYK", "C", "M", "Y", "K" })
-            {
-                this.ValueCollectionCMYK[mode][0] = 0;
             }
         }
 
