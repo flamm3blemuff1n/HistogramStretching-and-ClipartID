@@ -11,8 +11,8 @@ namespace LogicLayer
     public class Histogram : IHistogram
     {
         private Bitmap OriginalImage;
-        private Dictionary<string, int[]> ValueCollectionRGB;
-        private Dictionary<string, int[]> ValueCollectionCMYK;
+        private Dictionary<string, long[]> ValueCollectionRGB;
+        private Dictionary<string, long[]> ValueCollectionCMYK;
 
         /// <summary>
         /// Constructor
@@ -64,20 +64,20 @@ namespace LogicLayer
         /// </summary>
         private void InitValues()
         {
-            this.ValueCollectionRGB = new Dictionary<string, int[]>();
+            this.ValueCollectionRGB = new Dictionary<string, long[]>();
             string[] modes = new string[] { "RGB", "LUM", "R", "G", "B" };
 
             foreach (string mode in modes)
             {
-                this.ValueCollectionRGB.Add(mode, new int[256]);
+                this.ValueCollectionRGB.Add(mode, new long[256]);
             }
 
-            this.ValueCollectionCMYK = new Dictionary<string, int[]>();
+            this.ValueCollectionCMYK = new Dictionary<string, long[]>();
             modes = new string[] { "CMYK", "C", "M", "Y", "K" };
 
             foreach (string mode in modes)
             {
-                this.ValueCollectionCMYK.Add(mode, new int[1001]);
+                this.ValueCollectionCMYK.Add(mode, new long[1001]);
             }
         }
 
@@ -187,7 +187,7 @@ namespace LogicLayer
         /// <param name="lower">Amount of pixels in percent to ignore for lower border</param>
         /// <param name="upper">Amount of pixels in percent to ignore for upper border</param>
         /// <returns>Lower and Upper border for a Color component</returns>
-        private int[] GetMinMax(int[] values, int lower, int upper)
+        private int[] GetMinMax(long[] values, int lower, int upper)
         {
             int pixels = OriginalImage.Width * OriginalImage.Height;
             int lowerPixelCount = (int)Math.Round(pixels * (lower/100.0), 0);
@@ -205,9 +205,9 @@ namespace LogicLayer
         /// <param name="values">All values from a specific Color component</param>
         /// <param name="lowerPixelCount">Amount of pixels to ignore</param>
         /// <returns>Minumum border</returns>
-        private int GetMin(int[] values, int lowerPixelCount)
+        private int GetMin(long[] values, int lowerPixelCount)
         {
-            int count = 0;
+            long count = 0;
             int minP = 0;
             for (int i = 0; i < values.Length; i++)
             {
@@ -227,9 +227,9 @@ namespace LogicLayer
         /// <param name="values">All values from a specific Color component</param>
         /// <param name="upperPixelCount">Amount of pixels to ignore</param>
         /// <returns>Maximum border</returns>
-        private int GetMax(int[] values, int upperPixelCount)
+        private int GetMax(long[] values, int upperPixelCount)
         {
-            int count = 0;
+            long count = 0;
             int maxP = 0;
             for (int i = 255; i >= 0; i--)
             {
@@ -251,7 +251,7 @@ namespace LogicLayer
         /// <param name="color">What color component to use</param>
         public void Draw(Bitmap bitmap, string colorMode, string color)
         {
-            Dictionary<string, int[]> values = new Dictionary<string, int[]>();
+            Dictionary<string, long[]> values = new Dictionary<string, long[]>();
 
             switch (colorMode)
             {
