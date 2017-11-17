@@ -157,6 +157,7 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "ColorModel:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.label3, "Select a color model that the histograms should represent.\r\n");
             // 
             // comboBoxModeOriginal
             // 
@@ -180,6 +181,7 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Component:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip1.SetToolTip(this.label4, "Select the component from a ColorModel that the histogram should represent.");
             // 
             // comboBoxOptionOriginal
             // 
@@ -205,7 +207,7 @@
             this.flowLayoutPanel1.Controls.Add(this.numericUpDownUpper);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(903, 58);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1072, 58);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // buttonLoadImage
@@ -234,7 +236,7 @@
             this.labelLoading.ForeColor = System.Drawing.Color.DarkRed;
             this.labelLoading.Location = new System.Drawing.Point(433, 0);
             this.labelLoading.Name = "labelLoading";
-            this.labelLoading.Size = new System.Drawing.Size(467, 26);
+            this.labelLoading.Size = new System.Drawing.Size(636, 26);
             this.labelLoading.TabIndex = 1;
             this.labelLoading.Text = "LoadingText";
             this.labelLoading.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
