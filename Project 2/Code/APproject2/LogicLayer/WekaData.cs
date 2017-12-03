@@ -11,6 +11,9 @@ namespace LogicLayer
         public string Location { get; set; }
         public Dictionary<string, List<string>> Files { get; private set; }
 
+        private int filesDone;
+        private int fileAmount;
+
         public WekaData(string location)
         {
             this.Location = location;
@@ -30,6 +33,8 @@ namespace LogicLayer
         public void Generate()
         {
             CreateFile();
+            this.filesDone = 0;
+            this.fileAmount = this.Files["normal"].Count + this.Files["clipart"].Count;
 
             foreach (string file in this.Files["normal"])
             {
@@ -41,6 +46,7 @@ namespace LogicLayer
                 AddDataToFile(GenerateData(file, "clipart"));
             }
 
+            PartProcessed?.Invoke("Finished");
         }
 
         public event Action<string> PartProcessed;
@@ -78,7 +84,8 @@ namespace LogicLayer
                 output += i + ",";
             }
             output += type;
-            PartProcessed?.Invoke("Added " + file);
+            filesDone++;
+            PartProcessed?.Invoke(filesDone + "/" + this.fileAmount + " Added " + file);
             return output;
         }
     }
