@@ -99,10 +99,12 @@
             // 
             // textBoxLog
             // 
+            this.textBoxLog.Enabled = false;
             this.textBoxLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxLog.Location = new System.Drawing.Point(8, 35);
             this.textBoxLog.Multiline = true;
             this.textBoxLog.Name = "textBoxLog";
+            this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxLog.Size = new System.Drawing.Size(813, 388);
             this.textBoxLog.TabIndex = 2;
             // 

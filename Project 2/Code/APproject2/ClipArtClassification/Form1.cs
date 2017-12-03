@@ -30,7 +30,7 @@ namespace ClipArtClassification
             {
                 wekaData.AddFiles(openFileDialog1.FileNames, "normal");
                 hasNormalImages = true;
-                this.textBoxLog.Text += "Normal Images added to cue." + Environment.NewLine;
+                this.textBoxLog.AppendText("Normal Images added to cue." + Environment.NewLine);
             }
         }
 
@@ -41,7 +41,8 @@ namespace ClipArtClassification
             {
                 wekaData.AddFiles(openFileDialog1.FileNames, "clipart");
                 hasClipartImages = true;
-                this.textBoxLog.Text += "Clipart Images added to cue." + Environment.NewLine;
+
+                this.textBoxLog.AppendText("Clipart Images added to cue." + Environment.NewLine);
             }
         }
 
@@ -55,11 +56,11 @@ namespace ClipArtClassification
                 {
                     if (File.Exists(folderBrowserDialog1.SelectedPath + @"\" + this.textBoxFileName.Text))
                     {
-                        this.textBoxLog.Text += "File already exist" + Environment.NewLine;
+                        this.textBoxLog.AppendText("File already exist" + Environment.NewLine);
                     }
                     else
                     {
-                        this.textBoxLog.Text += "generating file" + Environment.NewLine;
+                        this.textBoxLog.AppendText("generating file" + Environment.NewLine);
                         GenerateWekaData(folderBrowserDialog1.SelectedPath);
                     }
                 }
@@ -80,7 +81,7 @@ namespace ClipArtClassification
 
         public void PartProcessed(String value)
         {
-            this.textBoxLog.Text += value + Environment.NewLine;
+            this.textBoxLog.AppendText(value + Environment.NewLine);
             this.textBoxLog.Refresh();
         }
     }
