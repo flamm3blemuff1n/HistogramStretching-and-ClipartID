@@ -44,6 +44,7 @@
     <Compile Include="classes\Rgb.cs" />
     <Compile Include="interfaces\IHistogram.cs" />
     <Compile Include="interfaces\IRgb.cs" />
+    <Compile Include="interfaces\IWekaData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

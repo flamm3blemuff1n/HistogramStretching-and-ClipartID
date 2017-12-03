@@ -1,55 +1,53 @@
-﻿using System;
+﻿using Globals.interfaces;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LogicLayer
 {
-    public class WekaData
+    public class WekaData : IWekaData
     {
-        public string location { get; set; }
-        public Dictionary<string, List<string>> files { get; private set; }
+        public string Location { get; set; }
+        public Dictionary<string, List<string>> Files { get; private set; }
 
         public WekaData(string location)
         {
-            this.location = location;
-            this.files = new Dictionary<string, List<string>>();
-            this.files.Add("clipart", new List<string>());
-            this.files.Add("normal", new List<string>());
+            this.Location = location;
+            this.Files = new Dictionary<string, List<string>>();
+            this.Files.Add("clipart", new List<string>());
+            this.Files.Add("normal", new List<string>());
         }
 
-        public void addFiles(string[] files, string type)
+        public void AddFiles(string[] files, string type)
         {
             foreach(string file in files)
             {
-                this.files[type].Add(file);
+                this.Files[type].Add(file);
             }
         }
 
         public void Generate()
         {
-            createFile();
+            CreateFile();
 
-            foreach (string file in this.files["normal"])
+            foreach (string file in this.Files["normal"])
             {
-                addDataToFile(GenerateData(file, "normal"));
+                AddDataToFile(GenerateData(file, "normal"));
             }
 
-            foreach (string file in this.files["clipart"])
+            foreach (string file in this.Files["clipart"])
             {
-                addDataToFile(GenerateData(file, "clipart"));
+                AddDataToFile(GenerateData(file, "clipart"));
             }
 
         }
 
         public event Action<string> PartProcessed;
 
-        private void createFile()
+        private void CreateFile()
         {
-            using (StreamWriter file = File.AppendText(location))
+            using (StreamWriter file = File.AppendText(Location))
             {
                 file.WriteLine("@relation Data");
                 for (int i = 0; i <= 255; i++)
@@ -59,12 +57,12 @@ namespace LogicLayer
                 file.WriteLine("@attribute type {clipart, normal}");
                 file.WriteLine("@DATA");
             }
-            PartProcessed?.Invoke("Created file at" + location);
+            PartProcessed?.Invoke("Created file at" + Location);
         }
 
-        private void addDataToFile(string data)
+        private void AddDataToFile(string data)
         {
-            using (StreamWriter file = File.AppendText(location))
+            using (StreamWriter file = File.AppendText(Location))
             {
                 file.WriteLine(data);
             }

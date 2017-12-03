@@ -28,7 +28,7 @@ namespace ClipArtClassification
             openFileDialog1.Multiselect = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                wekaData.addFiles(openFileDialog1.FileNames, "normal");
+                wekaData.AddFiles(openFileDialog1.FileNames, "normal");
                 hasNormalImages = true;
                 this.textBoxLog.Text += "Normal Images added to cue." + Environment.NewLine;
             }
@@ -39,7 +39,7 @@ namespace ClipArtClassification
             openFileDialog1.Multiselect = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                wekaData.addFiles(openFileDialog1.FileNames, "clipart");
+                wekaData.AddFiles(openFileDialog1.FileNames, "clipart");
                 hasClipartImages = true;
                 this.textBoxLog.Text += "Clipart Images added to cue." + Environment.NewLine;
             }
@@ -71,7 +71,7 @@ namespace ClipArtClassification
             Cursor.Current = Cursors.WaitCursor;
             wekaData.PartProcessed += PartProcessed;
 
-            wekaData.location = path + @"\" + this.textBoxFileName.Text;
+            wekaData.Location = path + @"\" + this.textBoxFileName.Text;
 
             wekaData.Generate();
 

@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Globals.interfaces;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace Globals.classes
 {
-    public class Rgb
+    public class Rgb : IRgb
     {
         public Dictionary<string, long[]> ValueCollection { get; private set; }
 
