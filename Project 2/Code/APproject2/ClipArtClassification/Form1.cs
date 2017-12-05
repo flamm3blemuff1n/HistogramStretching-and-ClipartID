@@ -13,6 +13,7 @@ namespace ClipArtClassification
         {
             InitializeComponent();
         }
+        private Bitmap originalImage;
 
         private WekaData wekaData = new WekaData("");
         private Boolean hasNormalImages = false;
@@ -87,8 +88,12 @@ namespace ClipArtClassification
         {
             if(openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                this.pictureBoxOriginal.Image = new Bitmap(openFileDialog1.FileName);
+                originalImage = new Bitmap(openFileDialog1.FileName);
+                this.pictureBoxOriginal.Image = originalImage;
+                this.pictureBoxOriginal.Refresh();
                 this.textBoxFilePath.Text = openFileDialog1.FileName;
+                IdentifyImage();
+                originalImage.Dispose();
             }
         }
 
@@ -96,7 +101,7 @@ namespace ClipArtClassification
         {
             try
             {
-                Histogram hist = new Histogram((Bitmap)this.pictureBoxOriginal.Image);
+                Histogram hist = new Histogram(new Bitmap(originalImage));
                 Tree tree = new Tree(hist.GetData("LUM"));
                 Console.WriteLine(tree.IsClipart);
             }
