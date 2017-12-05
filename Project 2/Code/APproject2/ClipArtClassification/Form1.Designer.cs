@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buttonLoad = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.textBoxFileName = new System.Windows.Forms.TextBox();
             this.buttonGenerate = new System.Windows.Forms.Button();
@@ -38,8 +39,12 @@
             this.buttonLoadImages = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.pictureBoxOriginal = new System.Windows.Forms.PictureBox();
+            this.textBoxFilePath = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -55,6 +60,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.textBoxFilePath);
+            this.tabPage1.Controls.Add(this.pictureBoxOriginal);
+            this.tabPage1.Controls.Add(this.buttonLoad);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -62,6 +70,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Clipart Classefier";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // buttonLoad
+            // 
+            this.buttonLoad.Location = new System.Drawing.Point(8, 7);
+            this.buttonLoad.Name = "buttonLoad";
+            this.buttonLoad.Size = new System.Drawing.Size(83, 23);
+            this.buttonLoad.TabIndex = 0;
+            this.buttonLoad.Text = "Load Image";
+            this.buttonLoad.UseVisualStyleBackColor = true;
+            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
             // 
             // tabPage2
             // 
@@ -99,11 +117,11 @@
             // 
             // textBoxLog
             // 
-            this.textBoxLog.Enabled = false;
             this.textBoxLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxLog.Location = new System.Drawing.Point(8, 35);
             this.textBoxLog.Multiline = true;
             this.textBoxLog.Name = "textBoxLog";
+            this.textBoxLog.ReadOnly = true;
             this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBoxLog.Size = new System.Drawing.Size(813, 388);
             this.textBoxLog.TabIndex = 2;
@@ -133,6 +151,25 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
             // 
+            // pictureBoxOriginal
+            // 
+            this.pictureBoxOriginal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxOriginal.Location = new System.Drawing.Point(8, 36);
+            this.pictureBoxOriginal.Name = "pictureBoxOriginal";
+            this.pictureBoxOriginal.Size = new System.Drawing.Size(525, 382);
+            this.pictureBoxOriginal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxOriginal.TabIndex = 1;
+            this.pictureBoxOriginal.TabStop = false;
+            // 
+            // textBoxFilePath
+            // 
+            this.textBoxFilePath.Location = new System.Drawing.Point(98, 9);
+            this.textBoxFilePath.Name = "textBoxFilePath";
+            this.textBoxFilePath.ReadOnly = true;
+            this.textBoxFilePath.Size = new System.Drawing.Size(435, 20);
+            this.textBoxFilePath.TabIndex = 2;
+            this.textBoxFilePath.Text = "No Image Loaded!";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,8 +179,11 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -160,6 +200,9 @@
         private System.Windows.Forms.Button buttonGenerate;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.TextBox textBoxFileName;
+        private System.Windows.Forms.Button buttonLoad;
+        private System.Windows.Forms.TextBox textBoxFilePath;
+        private System.Windows.Forms.PictureBox pictureBoxOriginal;
     }
 }
 

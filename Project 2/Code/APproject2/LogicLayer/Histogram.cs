@@ -30,6 +30,7 @@ namespace LogicLayer
                     base.AddRgbColor(color);
                 }
             }
+            this.OriginalImage.Dispose();
         }
 
         public long[] GetData(String mode)

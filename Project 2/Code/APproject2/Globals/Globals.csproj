@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\Rgb.cs" />
+    <Compile Include="Globals.cs" />
     <Compile Include="interfaces\IHistogram.cs" />
     <Compile Include="interfaces\IRgb.cs" />
     <Compile Include="interfaces\IWekaData.cs" />

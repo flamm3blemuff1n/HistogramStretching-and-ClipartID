@@ -1,4 +1,5 @@
-﻿using Globals.interfaces;
+﻿using Globals;
+using Globals.interfaces;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,7 +10,7 @@ namespace LogicLayer
     public class WekaData : IWekaData
     {
         public string Location { get; set; }
-        public Dictionary<string, List<string>> Files { get; private set; }
+        public Dictionary<ImageType, List<string>> Files { get; private set; }
 
         private int filesDone;
         private int fileAmount;
@@ -17,12 +18,12 @@ namespace LogicLayer
         public WekaData(string location)
         {
             this.Location = location;
-            this.Files = new Dictionary<string, List<string>>();
-            this.Files.Add("clipart", new List<string>());
-            this.Files.Add("normal", new List<string>());
+            this.Files = new Dictionary<ImageType, List<string>>();
+            this.Files.Add(ImageType.Clipart, new List<string>());
+            this.Files.Add(ImageType.Normal, new List<string>());
         }
 
-        public void AddFiles(string[] files, string type)
+        public void AddFiles(string[] files, ImageType type)
         {
             foreach(string file in files)
             {
@@ -34,16 +35,16 @@ namespace LogicLayer
         {
             CreateFile();
             this.filesDone = 0;
-            this.fileAmount = this.Files["normal"].Count + this.Files["clipart"].Count;
+            this.fileAmount = this.Files[ImageType.Normal].Count + this.Files[ImageType.Clipart].Count;
 
-            foreach (string file in this.Files["normal"])
+            foreach (string file in this.Files[ImageType.Normal])
             {
-                AddDataToFile(GenerateData(file, "normal"));
+                AddDataToFile(GenerateData(file, ImageType.Normal));
             }
 
-            foreach (string file in this.Files["clipart"])
+            foreach (string file in this.Files[ImageType.Clipart])
             {
-                AddDataToFile(GenerateData(file, "clipart"));
+                AddDataToFile(GenerateData(file, ImageType.Clipart));
             }
 
             PartProcessed?.Invoke("Finished");
@@ -55,15 +56,16 @@ namespace LogicLayer
         {
             using (StreamWriter file = File.AppendText(Location))
             {
-                file.WriteLine("@relation Data");
+                file.WriteLine("@relation ClipartClassifier");
                 for (int i = 0; i <= 255; i++)
                 {
                     file.WriteLine("@attribute " + i + " numeric");
                 }
-                file.WriteLine("@attribute type {clipart, normal}");
+                file.WriteLine("@attribute type {Clipart, Normal}");
                 file.WriteLine("@DATA");
             }
-            PartProcessed?.Invoke("Created file at" + Location);
+
+            PartProcessed?.Invoke("Created file at " + Location);
         }
 
         private void AddDataToFile(string data)
@@ -74,7 +76,7 @@ namespace LogicLayer
             }
         }
 
-        private string GenerateData(string file, string type)
+        private string GenerateData(string file, ImageType type)
         {
             Histogram h = new Histogram(new Bitmap(file));
             long[] a = h.GetData("LUM");
@@ -83,7 +85,7 @@ namespace LogicLayer
             {
                 output += i + ",";
             }
-            output += type;
+            output += type.ToString();
             filesDone++;
             PartProcessed?.Invoke(filesDone + "/" + this.fileAmount + " Added " + file);
             return output;
