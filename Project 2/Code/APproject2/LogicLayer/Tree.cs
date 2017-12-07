@@ -4,26 +4,20 @@ namespace LogicLayer
 {
     public class Tree
     {
-        public Boolean IsClipart { get; private set; }
+        public Boolean[] IsClipart { get; private set; }
 
         private long[] data;
 
         public Tree(long[] data)
         {
             this.data = data;
-            this.IsClipart = TreeTwo();
+            IsClipart = new Boolean[3];
+            this.IsClipart[0] = TreeLumSmallJ48();
+            this.IsClipart[1] = TreeLumBigJ48();
+            this.IsClipart[2] = TreeLumBigRep();
         }
-        /*
-            42 <= 99
-            |   191 <= 183: clipart (167.0)
-            |   191 > 183
-            |   |   161 <= 205: clipart (7.0)
-            |   |   161 > 205: normal (2.0)
-            42 > 99
-            |   0 <= 4612: normal (95.0)
-            |   0 > 4612: clipart (8.0/1.0)
-         */
-        private Boolean TreeOne()
+
+        private Boolean TreeLumSmallJ48()
         {
             if(this.data[42] <= 99)
             {
@@ -44,7 +38,7 @@ namespace LogicLayer
             }
         }
 
-        private Boolean TreeTwo()
+        private Boolean TreeLumBigJ48()
         {
             if (this.data[34] <= 31)
             {
@@ -188,6 +182,98 @@ namespace LogicLayer
                                     else return false;
                                 }
                             }
+                        }
+                    }
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+
+        private Boolean TreeLumBigRep()
+        {
+            if (this.data[42] < 24.5)
+            {
+                if (this.data[190] < 231.5)
+                {
+                    if (this.data[125] < 55.5)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        if (this.data[35] < 0.5)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            if (this.data[108] < 126)
+                            {
+                                if (this.data[144] <= 106.5) return true;
+                                else return false;
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (this.data[0] < 5621)
+                {
+                    if (this.data[102] < 31.5)
+                    {
+                        if (this.data[15] < 50.5)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            if (this.data[24] < 584.5) return false;
+                            else return true;
+                        }
+                    }
+                    else
+                    {
+                        if (this.data[168] < 44.5)
+                        {
+                            if (this.data[196] < 107.5)
+                            {
+                                if (this.data[43] < 53.5)
+                                {
+                                    if (this.data[13] < 18.5)
+                                    {
+                                        if (this.data[70] < 54) return true;
+                                        else return false;
+                                    }
+                                    else
+                                    {
+                                        return false;
+                                    }
+                                }
+                                else
+                                {
+                                    return false;
+                                }
+                            }
+                            else
+                            {
+                                return true;
+                            }
+                        }
+                        else
+                        {
+                            return false;
                         }
                     }
                 }

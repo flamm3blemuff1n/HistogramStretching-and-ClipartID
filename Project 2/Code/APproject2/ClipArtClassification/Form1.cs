@@ -88,6 +88,11 @@ namespace ClipArtClassification
         {
             if(openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                this.textBoxOutput.ResetText();
+                this.textBoxOutput.Refresh();
+                this.textBoxFilePath.ResetText();
+                this.textBoxFilePath.Refresh();
+
                 originalImage = new Bitmap(openFileDialog1.FileName);
                 this.pictureBoxOriginal.Image = originalImage;
                 this.pictureBoxOriginal.Refresh();
@@ -103,7 +108,10 @@ namespace ClipArtClassification
             {
                 Histogram hist = new Histogram(new Bitmap(originalImage));
                 Tree tree = new Tree(hist.GetData("LUM"));
-                Console.WriteLine(tree.IsClipart);
+                this.textBoxOutput.Text += "J48 tree with small data: " + tree.IsClipart[0] + Environment.NewLine;
+                this.textBoxOutput.Text += "J48 tree with big data: " + tree.IsClipart[1] + Environment.NewLine;
+                this.textBoxOutput.Text += "Rep tree with big data: " + tree.IsClipart[2] + Environment.NewLine;
+                this.textBoxOutput.Refresh();
             }
             catch(Exception e)
             {
