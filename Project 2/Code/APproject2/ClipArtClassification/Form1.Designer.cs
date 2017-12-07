@@ -181,7 +181,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "Image Files(*.BMP;*.JPG;*.TIFF;*.PNG)|*.BMP;*.JPG;*.TIFF;*.PNG";
+            this.openFileDialog1.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
             // 
             // label1
             // 

@@ -9,15 +9,16 @@ namespace ClipArtClassification
 {
     public partial class Form1 : Form
     {
-        public Form1()
-        {
-            InitializeComponent();
-        }
         private Bitmap originalImage;
 
         private WekaData wekaData = new WekaData("");
         private Boolean hasNormalImages = false;
         private Boolean hasClipartImages = false;
+        
+        public Form1()
+        {
+            InitializeComponent();
+        }
 
         private void buttonLoadImages_Click(object sender, EventArgs e)
         {
@@ -99,8 +100,8 @@ namespace ClipArtClassification
                 this.textBoxFilePath.Text = openFileDialog1.FileName;
                 this.textBoxFilePath.Refresh();
                 Cursor.Current = Cursors.WaitCursor;
+                Console.WriteLine(openFileDialog1.FileName);
                 IdentifyImage();
-                originalImage.Dispose();
                 Cursor.Current = Cursors.Default;
             }
         }
@@ -109,7 +110,7 @@ namespace ClipArtClassification
         {
             try
             {
-                Histogram hist = new Histogram(new Bitmap(originalImage));
+                Histogram hist = new Histogram(originalImage);
                 Tree tree = new Tree(hist.GetData("LUM"));
                 this.textBoxOutput.Text += "J48 tree using small data: " + tree.IsClipart[0] + Environment.NewLine;
                 this.textBoxOutput.Text += "J48 tree using big data: " + tree.IsClipart[1] + Environment.NewLine;

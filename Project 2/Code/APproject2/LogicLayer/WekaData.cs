@@ -78,17 +78,29 @@ namespace LogicLayer
 
         private string GenerateData(string file, ImageType type)
         {
-            Histogram h = new Histogram(new Bitmap(file));
-            long[] a = h.GetData("LUM");
-            String output = "";
-            foreach (long i in a)
+            try
             {
-                output += i + ",";
+                Bitmap bitmap = new Bitmap(file);
+                Histogram h = new Histogram(bitmap);
+                long[] a = h.GetData("LUM");
+                bitmap.Dispose();
+                String output = "";
+                foreach (long i in a)
+                {
+                    output += i + ",";
+                }
+                output += type.ToString();
+                filesDone++;
+                PartProcessed?.Invoke(filesDone + "/" + this.fileAmount + " Added " + file);
+                return output;
             }
-            output += type.ToString();
-            filesDone++;
-            PartProcessed?.Invoke(filesDone + "/" + this.fileAmount + " Added " + file);
-            return output;
+            catch (Exception e)
+            {
+                filesDone++;
+                PartProcessed?.Invoke(filesDone + "/" + this.fileAmount + " Error using " + file);
+                Console.WriteLine("Error making histogram from image " + e);
+                return null;
+            }
         }
     }
 }
