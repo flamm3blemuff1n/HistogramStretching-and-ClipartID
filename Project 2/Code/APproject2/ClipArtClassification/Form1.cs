@@ -97,8 +97,11 @@ namespace ClipArtClassification
                 this.pictureBoxOriginal.Image = originalImage;
                 this.pictureBoxOriginal.Refresh();
                 this.textBoxFilePath.Text = openFileDialog1.FileName;
+                this.textBoxFilePath.Refresh();
+                Cursor.Current = Cursors.WaitCursor;
                 IdentifyImage();
                 originalImage.Dispose();
+                Cursor.Current = Cursors.Default;
             }
         }
 
@@ -108,9 +111,9 @@ namespace ClipArtClassification
             {
                 Histogram hist = new Histogram(new Bitmap(originalImage));
                 Tree tree = new Tree(hist.GetData("LUM"));
-                this.textBoxOutput.Text += "J48 tree with small data: " + tree.IsClipart[0] + Environment.NewLine;
-                this.textBoxOutput.Text += "J48 tree with big data: " + tree.IsClipart[1] + Environment.NewLine;
-                this.textBoxOutput.Text += "Rep tree with big data: " + tree.IsClipart[2] + Environment.NewLine;
+                this.textBoxOutput.Text += "J48 tree using small data: " + tree.IsClipart[0] + Environment.NewLine;
+                this.textBoxOutput.Text += "J48 tree using big data: " + tree.IsClipart[1] + Environment.NewLine;
+                this.textBoxOutput.Text += "Rep tree using big data: " + tree.IsClipart[2] + Environment.NewLine;
                 this.textBoxOutput.Refresh();
             }
             catch(Exception e)

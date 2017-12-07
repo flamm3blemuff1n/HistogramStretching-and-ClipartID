@@ -42,6 +42,7 @@
             this.buttonLoadImages = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).BeginInit();
@@ -61,6 +62,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.textBoxOutput);
             this.tabPage1.Controls.Add(this.textBoxFilePath);
             this.tabPage1.Controls.Add(this.pictureBoxOriginal);
@@ -75,6 +77,7 @@
             // 
             // textBoxOutput
             // 
+            this.textBoxOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.textBoxOutput.Location = new System.Drawing.Point(540, 36);
             this.textBoxOutput.Multiline = true;
             this.textBoxOutput.Name = "textBoxOutput";
@@ -180,6 +183,15 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "Image Files(*.BMP;*.JPG;*.TIFF;*.PNG)|*.BMP;*.JPG;*.TIFF;*.PNG";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(552, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(252, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "The Image is clipart according to the following trees.";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,6 +227,7 @@
         private System.Windows.Forms.TextBox textBoxFilePath;
         private System.Windows.Forms.PictureBox pictureBoxOriginal;
         private System.Windows.Forms.TextBox textBoxOutput;
+        private System.Windows.Forms.Label label1;
     }
 }
 
