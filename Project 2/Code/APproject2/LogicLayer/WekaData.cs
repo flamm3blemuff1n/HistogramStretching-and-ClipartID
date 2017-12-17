@@ -31,6 +31,12 @@ namespace LogicLayer
             }
         }
 
+        public void ResetFiles()
+        {
+            this.Files[ImageType.Clipart] = new List<string>();
+            this.Files[ImageType.Normal] = new List<string>();
+        }
+
         public void Generate()
         {
             CreateFile();

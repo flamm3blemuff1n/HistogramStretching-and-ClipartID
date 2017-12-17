@@ -22,7 +22,7 @@ namespace ClipArtClassification
 
         private void buttonLoadImages_Click(object sender, EventArgs e)
         {
-            if (this.textBoxLog.Text.Contains("Finished")) this.textBoxLog.ResetText();
+            if (this.textBoxLog.Text.Contains("Finished")) ResetWeka();
             openFileDialog1.Multiselect = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -34,7 +34,7 @@ namespace ClipArtClassification
 
         private void buttonLoadClipart_Click(object sender, EventArgs e)
         {
-            if (this.textBoxLog.Text.Contains("Finished")) this.textBoxLog.ResetText();
+            if (this.textBoxLog.Text.Contains("Finished")) ResetWeka();
             openFileDialog1.Multiselect = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -47,7 +47,7 @@ namespace ClipArtClassification
 
         private void buttonGenerate_Click(object sender, EventArgs e)
         {
-            if(this.textBoxLog.Text.Contains("Finished")) this.textBoxLog.ResetText();
+            if(this.textBoxLog.Text.Contains("Finished")) ResetWeka();
             if (!hasClipartImages) this.textBoxLog.Text += "No clipart images loaded!" + Environment.NewLine;
             if (!hasNormalImages) this.textBoxLog.Text += "No normal images loaded!" + Environment.NewLine;
             if (hasClipartImages && hasNormalImages)
@@ -65,6 +65,12 @@ namespace ClipArtClassification
                     }
                 }
             }
+        }
+
+        private void ResetWeka()
+        {
+            this.textBoxLog.ResetText();
+            wekaData.ResetFiles();
         }
 
         private void GenerateWekaData(string path)

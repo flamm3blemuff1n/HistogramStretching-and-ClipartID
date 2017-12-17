@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.textBoxOutput = new System.Windows.Forms.TextBox();
             this.textBoxFilePath = new System.Windows.Forms.TextBox();
             this.pictureBoxOriginal = new System.Windows.Forms.PictureBox();
@@ -42,7 +43,6 @@
             this.buttonLoadImages = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxOriginal)).BeginInit();
@@ -72,8 +72,17 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(829, 426);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Clipart Classefier";
+            this.tabPage1.Text = "Clipart Classifier";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(552, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(252, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "The Image is clipart according to the following trees.";
             // 
             // textBoxOutput
             // 
@@ -183,15 +192,6 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "Image Files(*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(552, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(252, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "The Image is clipart according to the following trees.";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -200,7 +200,7 @@
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "ClipartID";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
