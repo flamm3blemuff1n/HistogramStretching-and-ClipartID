@@ -43,5 +43,11 @@
     <Compile Include="ImageManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Globals\Globals.csproj">
+      <Project>{35CA638B-84AF-4DC8-9656-4A592335A041}</Project>
+      <Name>Globals</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

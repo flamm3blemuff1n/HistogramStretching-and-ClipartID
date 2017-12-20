@@ -79,6 +79,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{E68773A6-6750-411F-8647-B2B3657B96B7}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Globals\Globals.csproj">
       <Project>{35CA638B-84AF-4DC8-9656-4A592335A041}</Project>
       <Name>Globals</Name>

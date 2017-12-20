@@ -21,6 +21,9 @@ namespace LogicLayer
             CalculateHistogram();
         }
 
+        /// <summary>
+        /// Iterate over the image pixels
+        /// </summary>
         private void CalculateHistogram()
         {
             Rectangle rect = new Rectangle(0, 0, this.OriginalImage.Width, this.OriginalImage.Height);
@@ -48,6 +51,11 @@ namespace LogicLayer
             }
         }
 
+        /// <summary>
+        /// Receive specific data of the image
+        /// </summary>
+        /// <param name="mode">Type of data that will be returned</param>
+        /// <returns>Data from an image</returns>
         public long[] GetData(String mode)
         {
             long[] output = base.ValueCollection[mode];

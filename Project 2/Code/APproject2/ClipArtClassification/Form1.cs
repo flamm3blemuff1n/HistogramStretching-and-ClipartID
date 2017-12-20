@@ -1,4 +1,5 @@
-﻿using Globals;
+﻿using DataLayer;
+using Globals;
 using LogicLayer;
 using System;
 using System.Drawing;
@@ -67,12 +68,19 @@ namespace ClipArtClassification
             }
         }
 
+        /// <summary>
+        /// Reset the files used for wekaData
+        /// </summary>
         private void ResetWeka()
         {
             this.textBoxLog.ResetText();
             wekaData.ResetFiles();
         }
 
+        /// <summary>
+        /// Generate data to use in Weka
+        /// </summary>
+        /// <param name="path">Path where to store the weka data file</param>
         private void GenerateWekaData(string path)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -85,6 +93,10 @@ namespace ClipArtClassification
             Cursor.Current = Cursors.WaitCursor;
         }
 
+        /// <summary>
+        /// update data on the form
+        /// </summary>
+        /// <param name="value">show what changed</param>
         public void PartProcessed(String value)
         {
             this.textBoxLog.AppendText(value + Environment.NewLine);
@@ -100,10 +112,12 @@ namespace ClipArtClassification
                 this.textBoxFilePath.ResetText();
                 this.textBoxFilePath.Refresh();
 
-                originalImage = new Bitmap(openFileDialog1.FileName);
+                ImageManager image = new ImageManager(openFileDialog1.FileName);
+
+                originalImage = new Bitmap(image.CurrentImagePath);
                 this.pictureBoxOriginal.Image = originalImage;
                 this.pictureBoxOriginal.Refresh();
-                this.textBoxFilePath.Text = openFileDialog1.FileName;
+                this.textBoxFilePath.Text = image.ImageName;
                 this.textBoxFilePath.Refresh();
                 Cursor.Current = Cursors.WaitCursor;
                 Console.WriteLine(openFileDialog1.FileName);
@@ -112,6 +126,9 @@ namespace ClipArtClassification
             }
         }
 
+        /// <summary>
+        /// Identify a loaded image
+        /// </summary>
         private void IdentifyImage()
         {
             try

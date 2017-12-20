@@ -23,6 +23,11 @@ namespace LogicLayer
             this.Files.Add(ImageType.Normal, new List<string>());
         }
 
+        /// <summary>
+        /// adds files to a list of their type
+        /// </summary>
+        /// <param name="files">All the image file paths</param>
+        /// <param name="type">type of image</param>
         public void AddFiles(string[] files, ImageType type)
         {
             foreach(string file in files)
@@ -31,12 +36,18 @@ namespace LogicLayer
             }
         }
 
+        /// <summary>
+        /// Reset the lists
+        /// </summary>
         public void ResetFiles()
         {
             this.Files[ImageType.Clipart] = new List<string>();
             this.Files[ImageType.Normal] = new List<string>();
         }
 
+        /// <summary>
+        /// generate the data using the files in the lists
+        /// </summary>
         public void Generate()
         {
             CreateFile();
@@ -58,6 +69,9 @@ namespace LogicLayer
 
         public event Action<string> PartProcessed;
 
+        /// <summary>
+        /// Create a basic weka file
+        /// </summary>
         private void CreateFile()
         {
             using (StreamWriter file = File.AppendText(Location))
@@ -74,6 +88,10 @@ namespace LogicLayer
             PartProcessed?.Invoke("Created file at " + Location);
         }
 
+        /// <summary>
+        /// add image data to the file
+        /// </summary>
+        /// <param name="data"></param>
         private void AddDataToFile(string data)
         {
             using (StreamWriter file = File.AppendText(Location))
@@ -82,6 +100,12 @@ namespace LogicLayer
             }
         }
 
+        /// <summary>
+        /// Get the needed data of the file
+        /// </summary>
+        /// <param name="file">The file to use</param>
+        /// <param name="type">Type of the file</param>
+        /// <returns></returns>
         private string GenerateData(string file, ImageType type)
         {
             try

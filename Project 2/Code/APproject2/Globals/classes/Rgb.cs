@@ -19,6 +19,10 @@ namespace Globals.classes
             }
         }
 
+        /// <summary>
+        /// Adds all the components of a color to a seperate list
+        /// </summary>
+        /// <param name="color">The color to use</param>
         public void AddRgbColor(Color color)
         {
             this.ValueCollection["R"][color.R]++;
